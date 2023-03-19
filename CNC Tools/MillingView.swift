@@ -1,15 +1,17 @@
-//
-//  MillingView.swift
-//  CNC Tools
-//
-//  Created by Georgi Vorobjov on 19.03.2023.
-//
-
 import SwiftUI
 
 struct MillingView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                Text("Milling")
+                    .padding([.top, .leading, .bottom])
+                    .font(.custom("SFPro-ExpandedMedium", size: 34))
+                Spacer()
+            }
+            Spacer()
+        }
+        .padding(.leading, 14.0)
     }
 }
 
