@@ -13,6 +13,9 @@
 		56EEB99D29C7AB50009894D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EEB99C29C7AB50009894D1 /* Preview Assets.xcassets */; };
 		56EEB99F29C7AB50009894D1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB99E29C7AB50009894D1 /* Persistence.swift */; };
 		56EEB9A229C7AB50009894D1 /* CNC_Tools.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB9A029C7AB50009894D1 /* CNC_Tools.xcdatamodeld */; };
+		56EEB9A929C7AB5F009894D1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB9A829C7AB5F009894D1 /* MainView.swift */; };
+		56EEB9AD29C7AC2A009894D1 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 56EEB9AC29C7AC2A009894D1 /* Fonts */; };
+		56EEB9B029C7ACEA009894D1 /* MillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB9AF29C7ACEA009894D1 /* MillingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,10 @@
 		56EEB99C29C7AB50009894D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		56EEB99E29C7AB50009894D1 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		56EEB9A129C7AB50009894D1 /* CNC_Tools.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CNC_Tools.xcdatamodel; sourceTree = "<group>"; };
+		56EEB9A829C7AB5F009894D1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		56EEB9AC29C7AC2A009894D1 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
+		56EEB9AE29C7AC8F009894D1 /* CNC-Tools-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "CNC-Tools-Info.plist"; sourceTree = SOURCE_ROOT; };
+		56EEB9AF29C7ACEA009894D1 /* MillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +62,15 @@
 		56EEB99429C7AB4F009894D1 /* CNC Tools */ = {
 			isa = PBXGroup;
 			children = (
+				56EEB9AC29C7AC2A009894D1 /* Fonts */,
 				56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */,
+				56EEB9A829C7AB5F009894D1 /* MainView.swift */,
+				56EEB9AF29C7ACEA009894D1 /* MillingView.swift */,
 				56EEB99729C7AB4F009894D1 /* ContentView.swift */,
 				56EEB99929C7AB50009894D1 /* Assets.xcassets */,
 				56EEB99E29C7AB50009894D1 /* Persistence.swift */,
 				56EEB9A029C7AB50009894D1 /* CNC_Tools.xcdatamodeld */,
+				56EEB9AE29C7AC8F009894D1 /* CNC-Tools-Info.plist */,
 				56EEB99B29C7AB50009894D1 /* Preview Content */,
 			);
 			path = "CNC Tools";
@@ -133,6 +144,7 @@
 			files = (
 				56EEB99D29C7AB50009894D1 /* Preview Assets.xcassets in Resources */,
 				56EEB99A29C7AB50009894D1 /* Assets.xcassets in Resources */,
+				56EEB9AD29C7AC2A009894D1 /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +158,9 @@
 				56EEB99F29C7AB50009894D1 /* Persistence.swift in Sources */,
 				56EEB99829C7AB4F009894D1 /* ContentView.swift in Sources */,
 				56EEB9A229C7AB50009894D1 /* CNC_Tools.xcdatamodeld in Sources */,
+				56EEB9A929C7AB5F009894D1 /* MainView.swift in Sources */,
 				56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */,
+				56EEB9B029C7ACEA009894D1 /* MillingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +292,7 @@
 				DEVELOPMENT_TEAM = NA69BPW4YG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CNC-Tools-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -307,6 +322,7 @@
 				DEVELOPMENT_TEAM = NA69BPW4YG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "CNC-Tools-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
