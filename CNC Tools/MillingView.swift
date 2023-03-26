@@ -150,8 +150,29 @@ struct MillingView: View {
             }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
                     HStack {
-                        Button("Done") {
+                        Button {
+                            switch focusedField {
+                            case .toolDiamField:
+                                focusedField = nil
+                            case .cutSpeedField:
+                                focusedField = .toolDiamField
+                            case .spinSpeedField:
+                                focusedField = .cutSpeedField
+                            case .numOfZField:
+                                focusedField = .spinSpeedField
+                            case .feedPerToothField:
+                                focusedField = .numOfZField
+                            case .feedRateField:
+                                focusedField = .feedPerToothField
+                            default:
+                                focusedField = nil
+                            }
+                        } label: {
+                            Image(systemName: "chevron.up")
+                        }
+                        Button {
                             switch focusedField {
                             case .toolDiamField:
                                 focusedField = .cutSpeedField
@@ -166,22 +187,21 @@ struct MillingView: View {
                             default:
                                 focusedField = nil
                             }
+                        } label: {
+                            Image(systemName: "chevron.down")
                         }
-                    }
-                    Spacer()
-                    HStack {
                         Button("Done") {
                             switch focusedField {
                             case .toolDiamField:
-                                focusedField = .cutSpeedField
+                                focusedField = nil
                             case .cutSpeedField:
-                                focusedField = .spinSpeedField
+                                focusedField = nil
                             case .spinSpeedField:
-                                focusedField = .numOfZField
+                                focusedField = nil
                             case .numOfZField:
-                                focusedField = .feedPerToothField
+                                focusedField = nil
                             case .feedPerToothField:
-                                focusedField = .feedRateField
+                                focusedField = nil
                             default:
                                 focusedField = nil
                             }
