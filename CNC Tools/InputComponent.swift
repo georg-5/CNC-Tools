@@ -11,20 +11,7 @@ struct InputComponent: View {
         self.inputName = inputName
         _inputValue = inputValue
     }
-
-    private func formattedNumber(from input: Double) -> String {
-        let components = "\(input)".split(separator: ".")
-        if components.count == 2, let integerPart = components.first, let decimalPart = components.last {
-            if decimalPart == "0" {
-                return String(integerPart)
-            } else {
-                return "\(integerPart).\(decimalPart)"
-            }
-            } else {
-                return "\(input)"
-            }
-        }
-    private let twoDigits: NumberFormatter = {
+    let twoDigits: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         formatter.minimumFractionDigits = 0
@@ -42,11 +29,9 @@ struct InputComponent: View {
             }
             TextField(inputName, value: $inputValue, formatter: twoDigits)
                 .keyboardType(.decimalPad)
-                .onChange(of: number) { newValue in
-                    if let doubleValue = newValue?.doubleValue {
-                        inputValue = doubleValue
-                        }
-                    }
+                .onChange(of: inputValue) { newValue in
+                                  inputValue = newValue
+                              }
                 .padding(.top, -10.0)
                 .padding(.bottom, 10.0)
                 .font(.custom("SFPro-ExpandedSemiBold", size: 28))
@@ -56,8 +41,8 @@ struct InputComponent: View {
 
 struct InputComponent_Previews: PreviewProvider {
     static var previews: some View {
-        InputComponent(name: "Введите число",
-                       inputName: "Число",
+        InputComponent(name: "Name",
+                       inputName: "Input name",
                        inputValue: .constant(0.0))
             .padding()
     }

@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreData
 
 struct MillingView: View {
     init() {
@@ -22,8 +23,26 @@ struct MillingView: View {
     @State var feedPerTooth = 0.0
     @State var feedRate = 0.0
     @FocusState var focusedField: Field?
+    @State var showAlert = false
+    @State var toolName = ""
+    @Environment(\.managedObjectContext) private var viewContext
     
     // - FUNCS
+    func saveTool() {
+            let newTool = Tool(context: viewContext)
+            newTool.toolDiameter = toolDiam
+            newTool.spindelSpeed = spindelSpeed
+            newTool.feedRate = feedRate
+            newTool.toolName = toolName
+            
+            do {
+                try viewContext.save()
+                print("Tool saved successfully")
+            } catch {
+                let nsError = error as NSError
+                        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                    }
+                }
     func cuttingSpeedFunc() {
         cuttingSpeed = (Double.pi * toolDiam * spindelSpeed) / 1000.0
     }
@@ -38,7 +57,6 @@ struct MillingView: View {
     }
     
     var body: some View {
-        
         // BINDINGS
             let tDiam = Binding (
                 get: { toolDiam },
@@ -111,11 +129,15 @@ struct MillingView: View {
                     }
                     .padding(.leading)
                 }
+                .scrollDismissesKeyboard(.immediately)
             }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
                     HStack {
+                        Button("Done") {
+                            focusedField = nil
+                        }
                         Button {
                             switch focusedField {
                             case .toolDiamField:
@@ -154,35 +176,39 @@ struct MillingView: View {
                         } label: {
                             Image(systemName: "chevron.down")
                         }
-                        Button("Done") {
-                            switch focusedField {
-                            case .toolDiamField:
-                                focusedField = nil
-                            case .cutSpeedField:
-                                focusedField = nil
-                            case .spinSpeedField:
-                                focusedField = nil
-                            case .numOfZField:
-                                focusedField = nil
-                            case .feedPerToothField:
-                                focusedField = nil
-                            default:
-                                focusedField = nil
-                            }
-                        }
                     }
                 }
             }
             .padding(.top, 10.0)
         }
+        .toolbar {
+            ToolbarItem {
+                HStack {
+                    Button("Save") {
+                        showAlert = true
+                    }
+                    .alert("Enter tool name.", isPresented: $showAlert, actions: {
+                        TextField("Tool name", text: $toolName)
+                            .foregroundColor(.black)
+                        Button("Save", action: {
+                            saveTool()
+                        })
+                        Button("Cancel", role: .cancel, action: {})
+                    }, message: {
+                        Text("Please enter a name for the tool.")
+                    })
+                }
+            }
+        }
         .navigationTitle("Milling")
         .navigationBarTitleDisplayMode(.large)
         .onTapToDismissKeyboard()
+        
     }
 }
 
 struct MillingView_Previews: PreviewProvider {
     static var previews: some View {
-        MillingView()
+        MillingView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
