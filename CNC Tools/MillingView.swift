@@ -37,38 +37,6 @@ struct MillingView: View {
         feedRate = feedPerTooth * spindelSpeed * numOfZ
     }
     
-    // - FORMATTERS
-        // - 2 DIGITS AFTER ZERO
-    private let twoDigits: NumberFormatter = {
-         let formatter = NumberFormatter()
-         formatter.locale = Locale.current
-         formatter.numberStyle = .decimal
-         formatter.minimumFractionDigits = 2
-         formatter.maximumFractionDigits = 2
-         formatter.zeroSymbol = ""
-         return formatter
-     }()
-        // - 1 DIGIT AFTER ZERO
-    private let oneDigit: NumberFormatter = {
-         let formatter = NumberFormatter()
-         formatter.locale = Locale.current
-         formatter.numberStyle = .decimal
-         formatter.minimumFractionDigits = 1
-         formatter.maximumFractionDigits = 1
-         formatter.zeroSymbol = ""
-         return formatter
-     }()
-        // - 0 DIGIT AFTER ZERO
-    private let zeroDigits: NumberFormatter = {
-         let formatter = NumberFormatter()
-         formatter.locale = Locale.current
-         formatter.numberStyle = .decimal
-         formatter.minimumFractionDigits = 0
-         formatter.maximumFractionDigits = 0
-         formatter.zeroSymbol = ""
-         return formatter
-     }()
-    
     var body: some View {
         
         // BINDINGS
@@ -127,25 +95,21 @@ struct MillingView: View {
             VStack {
                 ScrollView (.vertical) {
                     VStack() {
-                        InputComponent(name: "Tool diameter", inputName: "diam", inputValue: tDiam, inputFormatter: oneDigit)
+                        InputComponent(name: "Tool diameter", inputName: "diam", inputValue: tDiam)
                             .focused($focusedField, equals: .toolDiamField)
-                        InputComponent(name: "Cutting speed", inputName: "vc", inputValue: cSpeed, inputFormatter: zeroDigits)
+                        InputComponent(name: "Cutting speed", inputName: "vc", inputValue: cSpeed)
                             .focused($focusedField, equals: .cutSpeedField)
-                        InputComponent(name: "Spindel speed", inputName: "n", inputValue: sSpeed, inputFormatter: zeroDigits)
+                        InputComponent(name: "Spindel speed", inputName: "n", inputValue: sSpeed)
                             .focused($focusedField, equals: .spinSpeedField)
-                        InputComponent(name: "Number of teeth", inputName: "z", inputValue: nOfZ, inputFormatter: zeroDigits)
+                        InputComponent(name: "Number of teeth", inputName: "z", inputValue: nOfZ)
                             .focused($focusedField, equals: .numOfZField)
                             .padding(.top, 19.0)
-                        InputComponent(name: "Feed per tooth ", inputName: "fz", inputValue: fPerTooth, inputFormatter: twoDigits)
+                        InputComponent(name: "Feed per tooth ", inputName: "fz", inputValue: fPerTooth)
                             .focused($focusedField, equals: .feedPerToothField)
-                        InputComponent(name: "Feed rate", inputName: "vf", inputValue: fRate, inputFormatter: zeroDigits)
+                        InputComponent(name: "Feed rate", inputName: "vf", inputValue: fRate)
                             .focused($focusedField, equals: .feedRateField)
                     }
                     .padding(.leading)
-                    Spacer()
-                    Text("CNC TOOLS")
-                        .font(.custom("SFPro-ExpandedUltraLight", size: 15))
-                        .padding(.leading, 14.0)
                 }
             }
             .toolbar {
@@ -213,6 +177,7 @@ struct MillingView: View {
         }
         .navigationTitle("Milling")
         .navigationBarTitleDisplayMode(.large)
+        .onTapToDismissKeyboard()
     }
 }
 

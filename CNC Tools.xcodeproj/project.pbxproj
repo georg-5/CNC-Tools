@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56CF5B9E29D1A93200A1A355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5B9D29D1A93200A1A355 /* Extensions.swift */; };
 		56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */; };
 		56EEB99829C7AB4F009894D1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB99729C7AB4F009894D1 /* ContentView.swift */; };
 		56EEB99A29C7AB50009894D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EEB99929C7AB50009894D1 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56CF5B9D29D1A93200A1A355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		56EEB99229C7AB4F009894D1 /* CNC Tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CNC Tools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNC_ToolsApp.swift; sourceTree = "<group>"; };
 		56EEB99729C7AB4F009894D1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				56EEB9AC29C7AC2A009894D1 /* Fonts */,
 				56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */,
 				56EEB9A829C7AB5F009894D1 /* MainView.swift */,
+				56CF5B9D29D1A93200A1A355 /* Extensions.swift */,
 				56EEB9AF29C7ACEA009894D1 /* MillingView.swift */,
 				56EEB9B129C7B2D8009894D1 /* InputComponent.swift */,
 				56EEB99729C7AB4F009894D1 /* ContentView.swift */,
@@ -161,6 +164,7 @@
 				56EEB99F29C7AB50009894D1 /* Persistence.swift in Sources */,
 				56EEB99829C7AB4F009894D1 /* ContentView.swift in Sources */,
 				56EEB9B229C7B2D8009894D1 /* InputComponent.swift in Sources */,
+				56CF5B9E29D1A93200A1A355 /* Extensions.swift in Sources */,
 				56EEB9A229C7AB50009894D1 /* CNC_Tools.xcdatamodeld in Sources */,
 				56EEB9A929C7AB5F009894D1 /* MainView.swift in Sources */,
 				56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */,
