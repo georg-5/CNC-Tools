@@ -14,10 +14,11 @@ struct MainView: View {
                     Text("DRILLING")
                 }
                 .font(.custom("SFPro-ExpandedHeavy", size: 50))
-                .foregroundColor(.white)
                 HStack(spacing: 25.0) {
                     Image(systemName: "rectangle.stack")
-                    Image(systemName: "gearshape")
+                    NavigationLink(destination: SettingsView()) {
+                        Image(systemName: "gearshape")
+                    }
                 }
                 .padding(.top)
                 .font(.system(size: 30))
@@ -25,6 +26,7 @@ struct MainView: View {
                 Text("CNC TOOLS")
                     .font(.custom("SFPro-ExpandedUltraLight", size: 15))
             }
+            .foregroundColor(.white)
         }
     }
 }
