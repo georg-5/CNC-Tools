@@ -1,38 +1,48 @@
 import SwiftUI
+import CoreData
 
 struct SettingsView: View {
+    @State private var chooseMmOrInch: Bool = true  // true - MM, false - INCH
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var tools: FetchedResults<Tool>
+
     init() {
-            UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "SFPro-ExpandedMedium", size: 34)!]
-        }
+           UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "SFPro-ExpandedMedium", size: 34)!]
+       }
     
-    // - VARIABLES
-    @State var chooseMmOrInch = true    // true - MM, false - INCH
+    func chooseMmOrInchFunc() {
+        let metricInches: Tool
+        if let tool = tools.first {
+            metricInches = tool
+        } else {
+            metricInches = Tool(context: viewContext)
+        }
+        metricInches.mmOrInch = chooseMmOrInch
+        do {
+            try viewContext.save()
+            print("Tool are \(metricInches.mmOrInch)")
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+    }
     
     var body: some View {
         NavigationView {
             VStack {
                 Spacer()
                 HStack {
-                    switch chooseMmOrInch {
-                    case true:
-                        Button("MM") {
-                            
-                        }
-                        Text("/")
-                        Button("INCH") {
-                            
-                        }
-                        .opacity(0.5)
-                    case false:
-                        Button("MM") {
-                            
-                        }
-                        .opacity(0.5)
-                        Text("/")
-                        Button("INCH") {
-                            
-                        }
+                    Button("MM") {
+                        chooseMmOrInch = true
+                        chooseMmOrInchFunc()
                     }
+                    .opacity(chooseMmOrInch ? 1.0 : 0.3)
+                    Text("/")
+                    Button("INCH") {
+                        chooseMmOrInch = false
+                        chooseMmOrInchFunc()
+                    }
+                    .opacity(chooseMmOrInch ? 0.3 : 1.0)
                 }
                 .font(.custom("SFPro-ExpandedBold", size: 50))
                 .foregroundColor(.white)
@@ -41,6 +51,11 @@ struct SettingsView: View {
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            if let tool = tools.first {
+                chooseMmOrInch = tool.mmOrInch
+            }
+        }
     }
 }
 

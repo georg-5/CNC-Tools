@@ -1,7 +1,13 @@
 import SwiftUI
-
+import CoreData
 
 struct MainView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Tool.mmOrInch, ascending: true)],
+        animation: .default)
+        private var metricInches: FetchedResults<Tool>
+    
     var body: some View {
         NavigationView {
             VStack {

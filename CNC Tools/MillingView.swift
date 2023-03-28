@@ -3,7 +3,7 @@ import CoreData
 
 struct MillingView: View {
     init() {
-            UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "SFPro-ExpandedMedium", size: 34)!]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "SFPro-ExpandedMedium", size: 34)!]
         }
     
     enum Field: Hashable {
@@ -16,25 +16,25 @@ struct MillingView: View {
     }
     
     // - VARIABLES
-    @State var toolDiam = 0.0
-    @State var cuttingSpeed = 0.0
-    @State var spindelSpeed = 0.0
-    @State var numOfZ = 0.0
-    @State var feedPerTooth = 0.0
-    @State var feedRate = 0.0
-    @FocusState var focusedField: Field?
-    @State var showAlert = false
-    @State var toolName = ""
     @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var metricInches: FetchedResults<Tool>
+    @State private var toolDiam = 0.0
+    @State private var cuttingSpeed = 0.0
+    @State private var spindelSpeed = 0.0
+    @State private var numOfZ = 0.0
+    @State private var feedPerTooth = 0.0
+    @State private var feedRate = 0.0
+    @FocusState private var focusedField: Field?
+    @State private var showAlert = false
+    @State private var toolName = ""
     
     // - FUNCS
     func saveTool() {
-            let newTool = Tool(context: viewContext)
+        let newTool = Tool(context: viewContext)
             newTool.toolDiameter = toolDiam
             newTool.spindelSpeed = spindelSpeed
             newTool.feedRate = feedRate
             newTool.toolName = toolName
-            
             do {
                 try viewContext.save()
                 print("Tool saved successfully")
