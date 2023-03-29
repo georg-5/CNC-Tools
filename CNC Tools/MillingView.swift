@@ -27,8 +27,8 @@ struct MillingView: View {
     @FocusState private var focusedField: Field?
     @State private var showAlert = false
     @State private var toolName = ""
+    @State private var metricInchesCheck = true    // true - MM, false - INCH
     
-    // - FUNCS
     func saveTool() {
         let newTool = Tool(context: viewContext)
             newTool.toolDiameter = toolDiam
@@ -44,10 +44,18 @@ struct MillingView: View {
                     }
                 }
     func cuttingSpeedFunc() {
-        cuttingSpeed = (Double.pi * toolDiam * spindelSpeed) / 1000.0
+        if metricInchesCheck {
+            cuttingSpeed = (Double.pi * toolDiam * spindelSpeed) / 1000.0   // MM
+        } else {
+            cuttingSpeed = (Double.pi * toolDiam * spindelSpeed) / 12.0    // INCH
+        }
     }
     func spindelSpeedFunc() {
-        spindelSpeed = (cuttingSpeed * 1000.0) / (Double.pi * toolDiam)
+        if metricInchesCheck {
+            spindelSpeed = (cuttingSpeed * 1000.0) / (Double.pi * toolDiam)
+        } else {
+            spindelSpeed = (cuttingSpeed * 12.0) / (Double.pi * toolDiam)
+        }
     }
     func feedPerToothFunc() {
         feedPerTooth = feedRate / (spindelSpeed * numOfZ)
@@ -202,6 +210,11 @@ struct MillingView: View {
         }
         .navigationTitle("Milling")
         .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+            if let metricInchesCored = metricInches.first {
+                metricInchesCheck = metricInchesCored.mmOrInch
+            }
+        }
         .onTapToDismissKeyboard()
         
     }
@@ -209,6 +222,6 @@ struct MillingView: View {
 
 struct MillingView_Previews: PreviewProvider {
     static var previews: some View {
-        MillingView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        MillingView()
     }
 }

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		56CF5B9E29D1A93200A1A355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5B9D29D1A93200A1A355 /* Extensions.swift */; };
 		56CF5BA229D21C6E00A1A355 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BA129D21C6E00A1A355 /* SettingsView.swift */; };
+		56CF5BA829D4B39600A1A355 /* SavedToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BA729D4B39600A1A355 /* SavedToolsView.swift */; };
+		56CF5BAC29D4D45700A1A355 /* SavedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BAB29D4D45700A1A355 /* SavedComponent.swift */; };
 		56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */; };
 		56EEB99A29C7AB50009894D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EEB99929C7AB50009894D1 /* Assets.xcassets */; };
 		56EEB99D29C7AB50009894D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EEB99C29C7AB50009894D1 /* Preview Assets.xcassets */; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		56CF5B9D29D1A93200A1A355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		56CF5BA129D21C6E00A1A355 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		56CF5BA729D4B39600A1A355 /* SavedToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedToolsView.swift; sourceTree = "<group>"; };
+		56CF5BAB29D4D45700A1A355 /* SavedComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedComponent.swift; sourceTree = "<group>"; };
 		56EEB99229C7AB4F009894D1 /* CNC Tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CNC Tools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNC_ToolsApp.swift; sourceTree = "<group>"; };
 		56EEB99929C7AB50009894D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,7 +76,9 @@
 				56CF5B9D29D1A93200A1A355 /* Extensions.swift */,
 				56EEB9AF29C7ACEA009894D1 /* MillingView.swift */,
 				56CF5BA129D21C6E00A1A355 /* SettingsView.swift */,
+				56CF5BA729D4B39600A1A355 /* SavedToolsView.swift */,
 				56EEB9B129C7B2D8009894D1 /* InputComponent.swift */,
+				56CF5BAB29D4D45700A1A355 /* SavedComponent.swift */,
 				56EEB99929C7AB50009894D1 /* Assets.xcassets */,
 				56EEB99E29C7AB50009894D1 /* Persistence.swift */,
 				56EEB9A029C7AB50009894D1 /* CNC_Tools.xcdatamodeld */,
@@ -163,6 +169,8 @@
 			files = (
 				56EEB99F29C7AB50009894D1 /* Persistence.swift in Sources */,
 				56EEB9B229C7B2D8009894D1 /* InputComponent.swift in Sources */,
+				56CF5BA829D4B39600A1A355 /* SavedToolsView.swift in Sources */,
+				56CF5BAC29D4D45700A1A355 /* SavedComponent.swift in Sources */,
 				56CF5BA229D21C6E00A1A355 /* SettingsView.swift in Sources */,
 				56CF5B9E29D1A93200A1A355 /* Extensions.swift in Sources */,
 				56EEB9A229C7AB50009894D1 /* CNC_Tools.xcdatamodeld in Sources */,

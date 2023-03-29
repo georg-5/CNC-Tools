@@ -1,0 +1,17 @@
+import SwiftUI
+import CoreData
+
+struct SavedToolsView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var tools: FetchedResults<Tool>
+    
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+struct SavedToolsView_Previews: PreviewProvider {
+    static var previews: some View {
+        SavedToolsView()
+    }
+}
