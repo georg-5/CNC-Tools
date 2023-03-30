@@ -5,14 +5,13 @@ struct SavedComponent: View {
     var toolDiameter: Double
     var spindelSpeed: Double
     var feedRate: Double
-    @State var openStack: Bool
+    @State var openStack = false
     
-    init(toolName: String, toolDiameter: Double, spindelSpeed: Double, feedRate: Double, openStack: Bool) {
+    init(toolName: String, toolDiameter: Double, spindelSpeed: Double, feedRate: Double) {
         self.toolName = toolName
         self.toolDiameter = toolDiameter
         self.spindelSpeed = spindelSpeed
         self.feedRate = feedRate
-        self.openStack = openStack
     }
     let twoDigits: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -24,27 +23,37 @@ struct SavedComponent: View {
      }()
     
     var body: some View {
-        VStack {
-            Button {
-                openStack = true
-            } label: {
+        VStack(alignment: .leading) {
+            Toggle (isOn: $openStack) {
                 if openStack {
                     Image(systemName: "chevron.down")
                 } else {
                     Image(systemName: "chevron.right")
                 }
                 HStack {
-                    Text("Ø \(toolDiameter)")
+                    Text("Ø")
+                    Text(twoDigits.string(from: NSNumber(value: toolDiameter)) ?? "")
                     Text(toolName)
                     Spacer()
                 }
             }
+            .toggleStyle(.button)
             .foregroundColor(.white)
             .font(.custom("SFPro-ExpandedSemiBold", size: 14))
             if openStack {
                 HStack {
-                    Text("Spindel speed: \(spindelSpeed)")
-                    Text("Feed rate: \(feedRate)")
+                    Spacer()
+                        .frame(width: 36.0)
+                    VStack(alignment: .leading) {
+                        Text("Spindel speed:")
+                        Text(twoDigits.string(from: NSNumber(value: spindelSpeed)) ?? "")
+                    }
+                    Spacer()
+                        .frame(width: 60.0)
+                    VStack(alignment: .leading) {
+                        Text("Feed rate:")
+                        Text(twoDigits.string(from: NSNumber(value: feedRate)) ?? "")
+                    }
                 }
                 .foregroundColor(.white)
                 .font(.custom("SFPro-ExpandedRegular", size: 13))
@@ -55,6 +64,6 @@ struct SavedComponent: View {
 
 struct SavedComponent_Previews: PreviewProvider {
     static var previews: some View {
-        SavedComponent(toolName: "Name", toolDiameter: 0.0, spindelSpeed: 0.0, feedRate: 0.0, openStack: false).padding()
+        SavedComponent(toolName: "Sandvik", toolDiameter: 120.0, spindelSpeed: 1200.0, feedRate: 666).padding()
     }
 }

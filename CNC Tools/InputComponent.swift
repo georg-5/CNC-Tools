@@ -4,7 +4,6 @@ struct InputComponent: View {
     var name: String
     var inputName: String
     @Binding var inputValue: Double
-    @State private var number: NSNumber? = 0
     
     init(name: String, inputName: String, inputValue: Binding<Double>) {
         self.name = name

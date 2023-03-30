@@ -21,7 +21,9 @@ struct MainView: View {
                 }
                 .font(.custom("SFPro-ExpandedHeavy", size: 50))
                 HStack(spacing: 25.0) {
-                    Image(systemName: "rectangle.stack")
+                    NavigationLink(destination: SavedToolsView()) {
+                        Image(systemName: "rectangle.stack")
+                    }
                     NavigationLink(destination: SettingsView()) {
                         Image(systemName: "gearshape")
                     }
