@@ -35,6 +35,7 @@ struct MillingView: View {
             newTool.spindelSpeed = spindelSpeed
             newTool.feedRate = feedRate
             newTool.toolName = toolName
+        newTool.category = 1.0
             do {
                 try viewContext.save()
                 print("Tool saved successfully")

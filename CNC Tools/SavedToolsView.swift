@@ -11,7 +11,8 @@ struct SavedToolsView: View {
         }
     
     @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var tools: FetchedResults<Tool>
+    @FetchRequest(entity: Tool.entity(), sortDescriptors: [])
+    private var tools: FetchedResults<Tool>
     
     // FUNC
     private func deleteItems(offsets: IndexSet) {
@@ -31,13 +32,18 @@ struct SavedToolsView: View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(tools) { tool in
-                        SavedComponent(toolName: tool.toolName ?? "",
-                                        toolDiameter: tool.toolDiameter,
-                                        spindelSpeed: tool.spindelSpeed,
-                                        feedRate: tool.feedRate)
+                    if $tools.category == 1.0 {
+                        Section(header: Text("Mills")) {
+                            ForEach(tools) { tool in
+                                SavedComponent(toolName: tool.toolName ?? "",
+                                               toolDiameter: tool.toolDiameter,
+                                               spindelSpeed: tool.spindelSpeed,
+                                               feedRate: tool.feedRate)
+                            }
+                            .onDelete(perform: deleteItems)
+                        }
+                        .font(.custom("SFPro-ExpandedRegular", size: 13))
                     }
-                    .onDelete(perform: deleteItems)
                 }
             }
         }
