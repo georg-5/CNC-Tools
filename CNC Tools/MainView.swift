@@ -8,6 +8,8 @@ struct MainView: View {
         animation: .default)
         private var metricInches: FetchedResults<Tool>
     
+    @State private var metricInchesCheck = true    // true - MM, false - INCH
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -16,8 +18,12 @@ struct MainView: View {
                     NavigationLink(destination: MillingView()) {
                         Text("MILLING")
                     }
-                    Text("TURNING")
-                    Text("DRILLING")
+                    NavigationLink(destination: TurningView()) {
+                        Text("TURNING")
+                    }
+                    NavigationLink(destination: DrillingView()) {
+                        Text("DRILLING")
+                    }
                 }
                 .font(.custom("SFPro-ExpandedHeavy", size: 50))
                 HStack(spacing: 25.0) {
@@ -35,6 +41,11 @@ struct MainView: View {
                     .font(.custom("SFPro-ExpandedUltraLight", size: 15))
             }
             .foregroundColor(.white)
+            .onAppear {
+                if let metricInchesCored = metricInches.first {
+                    metricInchesCheck = metricInchesCored.mmOrInch
+                }
+            }
         }
     }
 }

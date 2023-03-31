@@ -25,12 +25,12 @@ struct SavedComponent: View {
     var body: some View {
         VStack(alignment: .leading) {
             Toggle (isOn: $openStack) {
-                if openStack {
-                    Image(systemName: "chevron.down")
-                } else {
-                    Image(systemName: "chevron.right")
-                }
-                HStack {
+                HStack(alignment: .center) {
+                    if openStack {
+                        Image(systemName: "chevron.down")
+                    } else {
+                        Image(systemName: "chevron.right")
+                    }
                     Text("Ø")
                     Text(twoDigits.string(from: NSNumber(value: toolDiameter)) ?? "")
                     Text(toolName)
@@ -39,9 +39,9 @@ struct SavedComponent: View {
             }
             .toggleStyle(.button)
             .foregroundColor(.white)
-            .font(.custom("SFPro-ExpandedSemiBold", size: 14))
+            .font(.custom("SFPro-ExpandedSemiBold", size: 17))
             if openStack {
-                HStack {
+                HStack(alignment: .center) {
                     Spacer()
                         .frame(width: 36.0)
                     VStack(alignment: .leading) {
