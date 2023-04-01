@@ -15,7 +15,6 @@
 		56CF5BAC29D4D45700A1A355 /* SavedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BAB29D4D45700A1A355 /* SavedComponent.swift */; };
 		56CF5BAE29D76C5800A1A355 /* TurningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BAD29D76C5800A1A355 /* TurningView.swift */; };
 		56CF5BB029D76FA200A1A355 /* DrillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BAF29D76FA200A1A355 /* DrillingView.swift */; };
-		56CF5BB529D81CDE00A1A355 /* NativeAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BB429D81CDE00A1A355 /* NativeAdView.swift */; };
 		56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */; };
 		56EEB99A29C7AB50009894D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EEB99929C7AB50009894D1 /* Assets.xcassets */; };
 		56EEB99D29C7AB50009894D1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EEB99C29C7AB50009894D1 /* Preview Assets.xcassets */; };
@@ -49,7 +48,6 @@
 		56CF5BAB29D4D45700A1A355 /* SavedComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedComponent.swift; path = Components/SavedComponent.swift; sourceTree = "<group>"; };
 		56CF5BAD29D76C5800A1A355 /* TurningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TurningView.swift; path = Views/TurningView.swift; sourceTree = "<group>"; };
 		56CF5BAF29D76FA200A1A355 /* DrillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DrillingView.swift; path = Views/DrillingView.swift; sourceTree = "<group>"; };
-		56CF5BB429D81CDE00A1A355 /* NativeAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAdView.swift; sourceTree = "<group>"; };
 		56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNC_ToolsApp.swift; sourceTree = "<group>"; };
 		56EEB99929C7AB50009894D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56EEB99C29C7AB50009894D1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 				56EEB9AC29C7AC2A009894D1 /* Fonts */,
 				56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */,
 				56EEB9A829C7AB5F009894D1 /* MainView.swift */,
-				56CF5BB429D81CDE00A1A355 /* NativeAdView.swift */,
 				56CF5B9D29D1A93200A1A355 /* Extensions.swift */,
 				56EEB9AF29C7ACEA009894D1 /* MillingView.swift */,
 				56CF5BAD29D76C5800A1A355 /* TurningView.swift */,
@@ -202,7 +199,6 @@
 				56EEB9A929C7AB5F009894D1 /* MainView.swift in Sources */,
 				56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */,
 				56EEB9B029C7ACEA009894D1 /* MillingView.swift in Sources */,
-				56CF5BB529D81CDE00A1A355 /* NativeAdView.swift in Sources */,
 				56CF5BAE29D76C5800A1A355 /* TurningView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
