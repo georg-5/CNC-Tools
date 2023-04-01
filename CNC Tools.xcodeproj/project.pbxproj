@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5683C5FF29D84D330097BD19 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 5683C5FE29D84D330097BD19 /* GoogleMobileAds */; };
 		5683C60729D869ED0097BD19 /* CNC-Tools-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */; };
+		56B38CD129D8BDB40091F421 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B38CD029D8BDB40091F421 /* BannerView.swift */; };
 		56CF5B9E29D1A93200A1A355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5B9D29D1A93200A1A355 /* Extensions.swift */; };
 		56CF5BA229D21C6E00A1A355 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BA129D21C6E00A1A355 /* SettingsView.swift */; };
 		56CF5BA829D4B39600A1A355 /* SavedToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BA729D4B39600A1A355 /* SavedToolsView.swift */; };
@@ -40,8 +41,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5683C60529D869890097BD19 /* CNC Tools.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; name = "CNC Tools.app"; path = "/Users/georg/Desktop/Coding Projects/CNC Tools/build/Debug-iphoneos/CNC Tools.app"; sourceTree = "<absolute>"; };
 		5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CNC-Tools-Info.plist"; sourceTree = "<group>"; };
+		56B38CCF29D8B0370091F421 /* CNC Tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CNC Tools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56B38CD029D8BDB40091F421 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		56CF5B9D29D1A93200A1A355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		56CF5BA129D21C6E00A1A355 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = Views/SettingsView.swift; sourceTree = "<group>"; };
 		56CF5BA729D4B39600A1A355 /* SavedToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedToolsView.swift; path = Views/SavedToolsView.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			children = (
 				5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */,
 				56EEB99429C7AB4F009894D1 /* CNC Tools */,
+				56B38CCF29D8B0370091F421 /* CNC Tools.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +88,7 @@
 				56EEB9AC29C7AC2A009894D1 /* Fonts */,
 				56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */,
 				56EEB9A829C7AB5F009894D1 /* MainView.swift */,
+				56B38CD029D8BDB40091F421 /* BannerView.swift */,
 				56CF5B9D29D1A93200A1A355 /* Extensions.swift */,
 				56EEB9AF29C7ACEA009894D1 /* MillingView.swift */,
 				56CF5BAD29D76C5800A1A355 /* TurningView.swift */,
@@ -130,7 +134,7 @@
 				5683C5FE29D84D330097BD19 /* GoogleMobileAds */,
 			);
 			productName = "CNC Tools";
-			productReference = 5683C60529D869890097BD19 /* CNC Tools.app */;
+			productReference = 56B38CCF29D8B0370091F421 /* CNC Tools.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -199,6 +203,7 @@
 				56EEB9A929C7AB5F009894D1 /* MainView.swift in Sources */,
 				56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */,
 				56EEB9B029C7ACEA009894D1 /* MillingView.swift in Sources */,
+				56B38CD129D8BDB40091F421 /* BannerView.swift in Sources */,
 				56CF5BAE29D76C5800A1A355 /* TurningView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
