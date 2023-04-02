@@ -27,6 +27,16 @@
 		56EEB9B229C7B2D8009894D1 /* InputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB9B129C7B2D8009894D1 /* InputComponent.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		56B38CDC29D97A960091F421 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 56EEB98A29C7AB4F009894D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 56EEB99129C7AB4F009894D1;
+			remoteInfo = "CNC Tools";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		565B341329D844DB006A198B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -42,8 +52,9 @@
 
 /* Begin PBXFileReference section */
 		5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CNC-Tools-Info.plist"; sourceTree = "<group>"; };
-		56B38CCF29D8B0370091F421 /* CNC Tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CNC Tools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56B38CCF29D8B0370091F421 /* CNC Tools.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; name = "CNC Tools.app"; path = "/Users/georg/Desktop/Coding Projects/CNC Tools/build/Debug-iphoneos/CNC Tools.app"; sourceTree = "<absolute>"; };
 		56B38CD029D8BDB40091F421 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		56B38CD629D97A960091F421 /* CNC ToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "CNC ToolsUITests.xctest"; path = "/Users/georg/Desktop/Coding Projects/CNC Tools/build/Debug-iphoneos/CNC ToolsUITests.xctest"; sourceTree = "<absolute>"; };
 		56CF5B9D29D1A93200A1A355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		56CF5BA129D21C6E00A1A355 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = Views/SettingsView.swift; sourceTree = "<group>"; };
 		56CF5BA729D4B39600A1A355 /* SavedToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SavedToolsView.swift; path = Views/SavedToolsView.swift; sourceTree = "<group>"; };
@@ -62,6 +73,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		56B38CD329D97A960091F421 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56EEB98F29C7AB4F009894D1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -78,7 +96,6 @@
 			children = (
 				5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */,
 				56EEB99429C7AB4F009894D1 /* CNC Tools */,
-				56B38CCF29D8B0370091F421 /* CNC Tools.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +133,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		56B38CD529D97A960091F421 /* CNC ToolsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56B38CDE29D97A960091F421 /* Build configuration list for PBXNativeTarget "CNC ToolsUITests" */;
+			buildPhases = (
+				56B38CD229D97A960091F421 /* Sources */,
+				56B38CD329D97A960091F421 /* Frameworks */,
+				56B38CD429D97A960091F421 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56B38CDD29D97A960091F421 /* PBXTargetDependency */,
+			);
+			name = "CNC ToolsUITests";
+			productName = "CNC ToolsUITests";
+			productReference = 56B38CD629D97A960091F421 /* CNC ToolsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		56EEB99129C7AB4F009894D1 /* CNC Tools */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56EEB9A529C7AB50009894D1 /* Build configuration list for PBXNativeTarget "CNC Tools" */;
@@ -147,6 +182,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					56B38CD529D97A960091F421 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 56EEB99129C7AB4F009894D1;
+					};
 					56EEB99129C7AB4F009894D1 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -169,11 +208,19 @@
 			projectRoot = "";
 			targets = (
 				56EEB99129C7AB4F009894D1 /* CNC Tools */,
+				56B38CD529D97A960091F421 /* CNC ToolsUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		56B38CD429D97A960091F421 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56EEB99029C7AB4F009894D1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,6 +235,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		56B38CD229D97A960091F421 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		56EEB98E29C7AB4F009894D1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -210,7 +264,49 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		56B38CDD29D97A960091F421 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 56EEB99129C7AB4F009894D1 /* CNC Tools */;
+			targetProxy = 56B38CDC29D97A960091F421 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		56B38CDF29D97A960091F421 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NA69BPW4YG;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "georg.CNC-ToolsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "CNC Tools";
+			};
+			name = Debug;
+		};
+		56B38CE029D97A960091F421 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NA69BPW4YG;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "georg.CNC-ToolsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "CNC Tools";
+			};
+			name = Release;
+		};
 		56EEB9A329C7AB50009894D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -392,6 +488,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		56B38CDE29D97A960091F421 /* Build configuration list for PBXNativeTarget "CNC ToolsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				56B38CDF29D97A960091F421 /* Debug */,
+				56B38CE029D97A960091F421 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		56EEB98D29C7AB4F009894D1 /* Build configuration list for PBXProject "CNC Tools" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
