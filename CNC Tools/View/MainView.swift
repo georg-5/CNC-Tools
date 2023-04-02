@@ -31,23 +31,47 @@ struct MainView: View {
     @StateObject private var appState = AppState()
     @StateObject private var reviewManager = ReviewManager()
     @State private var showAlert = false
+    @State private var showAlertForSavedTool = false
     
     // MARK: - FUNCTIONS
     private func checkValuesInCoreData() -> Bool {
-        let outDiamPred = NSPredicate(format: "outerDiameter != nil")
-        let toolDiamMillPred = NSPredicate(format: "toolDiameterMill != nil")
-        let toolDiamDrillPred = NSPredicate(format: "toolDiameterDrill != nil")
-        let sumPred = NSCompoundPredicate(orPredicateWithSubpredicates: [outDiamPred, toolDiamMillPred, toolDiamDrillPred])
-            
-        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Tool.fetchRequest()
-        fetchRequest.predicate = sumPred
+           let sumOuterDiameter = sumOfAttribute("outerDiameter")
+           let sumToolDiameterMills = sumOfAttribute("toolDiameterMill")
+           let sumToolDiameterDrills = sumOfAttribute("toolDiameterDrill")
+           
+           return sumOuterDiameter > 0.0 || sumToolDiameterMills > 0.0 || sumToolDiameterDrills > 0.0
+       }
+    private func sumOfAttribute(_ attributeName: String) -> Double {
+        let keyPathExpression = NSExpression(forKeyPath: attributeName)
+        let sumExpression = NSExpression(forFunction: "sum:", arguments: [keyPathExpression])
+        
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Tool")
+        fetchRequest.resultType = .dictionaryResultType
+        
+        let sumExpressionDescription = NSExpressionDescription()
+        sumExpressionDescription.name = "sum"
+        sumExpressionDescription.expression = sumExpression
+        sumExpressionDescription.expressionResultType = .doubleAttributeType
+        
+        fetchRequest.propertiesToFetch = [sumExpressionDescription]
+        
         do {
-            let count = try viewContext.count(for: fetchRequest)
-                return count > 0
+            let results = try viewContext.fetch(fetchRequest) as? [NSDictionary]
+            let sum = results?.first?["sum"] as? Double ?? 0.0
+            return sum
         } catch {
-            return false
+            print("Ошибка при подсчете суммы значений в CoreData: \(error)")
+            return 0.0
         }
     }
+    private func autoDismissAlert() {
+            Task {
+                await Task.sleep(UInt64(1 * 1_000_000_000)) // 3 секунды
+                DispatchQueue.main.async {
+                    showAlertForSavedTool = false
+                }
+            }
+        }
 
     var body: some View {
         NavigationView {
@@ -74,10 +98,14 @@ struct MainView: View {
                         }
                     } else {
                         Button(action: {
-                            
+                            showAlertForSavedTool = true
+                            autoDismissAlert()
                         }, label: {
                             Image(systemName: "rectangle.stack")
                         })
+                        .fullScreenCover(isPresented: $showAlertForSavedTool, content: {
+                            AlertComponent(showAlertComp: showAlertForSavedTool)
+                                    })
                     }
                     NavigationLink(destination: SettingsView()) {
                         Image(systemName: "gearshape")

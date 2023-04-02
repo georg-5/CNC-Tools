@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56205B6429DA19C800B7A1F7 /* AlertComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56205B6329DA19C800B7A1F7 /* AlertComponent.swift */; };
 		5683C5FF29D84D330097BD19 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 5683C5FE29D84D330097BD19 /* GoogleMobileAds */; };
 		5683C60729D869ED0097BD19 /* CNC-Tools-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */; };
 		56B38CD129D8BDB40091F421 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B38CD029D8BDB40091F421 /* BannerView.swift */; };
@@ -51,10 +52,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		56205B6129DA055200B7A1F7 /* CNC Tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CNC Tools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56205B6229DA055200B7A1F7 /* CNC ToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CNC ToolsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		56205B6329DA19C800B7A1F7 /* AlertComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertComponent.swift; sourceTree = "<group>"; };
 		5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CNC-Tools-Info.plist"; sourceTree = "<group>"; };
-		56B38CCF29D8B0370091F421 /* CNC Tools.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; name = "CNC Tools.app"; path = "/Users/georg/Desktop/Coding Projects/CNC Tools/build/Debug-iphoneos/CNC Tools.app"; sourceTree = "<absolute>"; };
 		56B38CD029D8BDB40091F421 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
-		56B38CD629D97A960091F421 /* CNC ToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "CNC ToolsUITests.xctest"; path = "/Users/georg/Desktop/Coding Projects/CNC Tools/build/Debug-iphoneos/CNC ToolsUITests.xctest"; sourceTree = "<absolute>"; };
 		56CF5B9D29D1A93200A1A355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		56CF5BA129D21C6E00A1A355 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		56CF5BA729D4B39600A1A355 /* SavedToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedToolsView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				56EEB9B129C7B2D8009894D1 /* InputComponent.swift */,
 				56CF5BAB29D4D45700A1A355 /* SavedComponent.swift */,
+				56205B6329DA19C800B7A1F7 /* AlertComponent.swift */,
 			);
 			path = Comp;
 			sourceTree = "<group>";
@@ -119,6 +122,8 @@
 			children = (
 				5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */,
 				56EEB99429C7AB4F009894D1 /* CNC Tools */,
+				56205B6129DA055200B7A1F7 /* CNC Tools.app */,
+				56205B6229DA055200B7A1F7 /* CNC ToolsUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -164,7 +169,7 @@
 			);
 			name = "CNC ToolsUITests";
 			productName = "CNC ToolsUITests";
-			productReference = 56B38CD629D97A960091F421 /* CNC ToolsUITests.xctest */;
+			productReference = 56205B6229DA055200B7A1F7 /* CNC ToolsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		56EEB99129C7AB4F009894D1 /* CNC Tools */ = {
@@ -185,7 +190,7 @@
 				5683C5FE29D84D330097BD19 /* GoogleMobileAds */,
 			);
 			productName = "CNC Tools";
-			productReference = 56B38CCF29D8B0370091F421 /* CNC Tools.app */;
+			productReference = 56205B6129DA055200B7A1F7 /* CNC Tools.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -262,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56205B6429DA19C800B7A1F7 /* AlertComponent.swift in Sources */,
 				56EEB99F29C7AB50009894D1 /* Persistence.swift in Sources */,
 				56CF5BB029D76FA200A1A355 /* DrillingView.swift in Sources */,
 				56EEB9B229C7B2D8009894D1 /* InputComponent.swift in Sources */,
