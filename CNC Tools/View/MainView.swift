@@ -7,15 +7,47 @@ import StoreKit
 class AppState: ObservableObject {
     @Published var metricInchesCheck = true
 }
+
 class ReviewManager: ObservableObject {
+    private let appLaunchCountKey = "appLaunchCount"
+    private let nextRequestReviewCountKey = "nextRequestReviewCount"
+    private let minimumLaunchesBeforeReview = 3
+    private let additionalLaunchesBeforeReview = 5
+
+    init() {
+        incrementLaunchCount()
+    }
+
+    private func incrementLaunchCount() {
+        let currentCount = UserDefaults.standard.integer(forKey: appLaunchCountKey)
+        UserDefaults.standard.set(currentCount + 1, forKey: appLaunchCountKey)
+    }
+
+    private func shouldRequestReview() -> Bool {
+        let currentCount = UserDefaults.standard.integer(forKey: appLaunchCountKey)
+        let nextRequestReviewCount = UserDefaults.standard.integer(forKey: nextRequestReviewCountKey)
+
+        if currentCount >= nextRequestReviewCount {
+            UserDefaults.standard.set(currentCount + additionalLaunchesBeforeReview, forKey: nextRequestReviewCountKey)
+            return true
+        }
+
+        return false
+    }
+
     func requestReview() {
-        if let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
+        if shouldRequestReview(),
+           let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
             SKStoreReviewController.requestReview(in: scene)
         }
     }
-    
+
     func showReviewAlertAfterDelay() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 300) {
+        if UserDefaults.standard.integer(forKey: nextRequestReviewCountKey) == 0 {
+            UserDefaults.standard.set(minimumLaunchesBeforeReview, forKey: nextRequestReviewCountKey)
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 800) {
             self.requestReview()
         }
     }
@@ -60,18 +92,10 @@ struct MainView: View {
             let sum = results?.first?["sum"] as? Double ?? 0.0
             return sum
         } catch {
-            print("Ошибка при подсчете суммы значений в CoreData: \(error)")
+            print("Error: \(error)")
             return 0.0
         }
     }
-    private func autoDismissAlert() {
-            Task {
-                await Task.sleep(UInt64(1 * 1_000_000_000)) // 3 секунды
-                DispatchQueue.main.async {
-                    showAlertForSavedTool = false
-                }
-            }
-        }
 
     var body: some View {
         NavigationView {
@@ -89,6 +113,10 @@ struct MainView: View {
                     NavigationLink(destination: DrillingView()) {
                         Text("DRILLING")
                     }
+                    Divider()
+                    NavigationLink(destination: TriangleView()) {
+                        Text("TRIANGLE")
+                    }
                 }
                 .font(.custom("SFPro-ExpandedHeavy", size: 50))
                 HStack(spacing: 25.0) {
@@ -99,13 +127,14 @@ struct MainView: View {
                     } else {
                         Button(action: {
                             showAlertForSavedTool = true
-                            autoDismissAlert()
                         }, label: {
                             Image(systemName: "rectangle.stack")
                         })
-                        .fullScreenCover(isPresented: $showAlertForSavedTool, content: {
-                            AlertComponent(showAlertComp: showAlertForSavedTool)
-                                    })
+                        .alert(isPresented: $showAlertForSavedTool) {
+                                Alert(
+                                    title: Text("No saved tools yet!")
+                                )
+                            }
                     }
                     NavigationLink(destination: SettingsView()) {
                         Image(systemName: "gearshape")
