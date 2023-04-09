@@ -2,13 +2,10 @@ import SwiftUI
 import CoreData
 
 struct SavedToolsView: View {
-    // MARK: - INIT
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "SFPro-ExpandedMedium", size: 34)!]
-    }
-    
     // MARK: - VARIABLES
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) var presentationMode:
+    Binding<PresentationMode>
     @FetchRequest(entity: Tool.entity(), sortDescriptors: [], predicate: NSPredicate(format: "toolType == %@", "milling")) private var toolsMills: FetchedResults<Tool>
     @FetchRequest(entity: Tool.entity(), sortDescriptors: [], predicate: NSPredicate(format: "toolType == %@", "turning")) private var toolsTurns: FetchedResults<Tool>
     @FetchRequest(entity: Tool.entity(), sortDescriptors: [], predicate: NSPredicate(format: "toolType == %@", "drilling")) private var toolsDrills: FetchedResults<Tool>
@@ -41,7 +38,7 @@ struct SavedToolsView: View {
                                 deleteItems(offsets: offsets, tools: toolsMills)
                             })
                         }
-                        .font(.custom("SFPro-ExpandedRegular", size: 13))
+                        .font(.custom("SpaceMono-Regular", size: 12))
                     }
                     if !toolsTurns.isEmpty {
                         Section(header: Text("Turning")) {
@@ -52,7 +49,7 @@ struct SavedToolsView: View {
                                 deleteItems(offsets: offsets, tools: toolsTurns)
                             })
                         }
-                        .font(.custom("SFPro-ExpandedRegular", size: 13))
+                        .font(.custom("SpaceMono-Regular", size: 12))
                     }
                     if !toolsDrills.isEmpty {
                         Section(header: Text("Drilling")) {
@@ -63,15 +60,31 @@ struct SavedToolsView: View {
                                 deleteItems(offsets: offsets, tools: toolsDrills)
                             })
                         }
-                        .font(.custom("SFPro-ExpandedRegular", size: 13))
+                        .font(.custom("SpaceMono-Regular", size: 12))
                     }
                 }
+                .listRowBackground(Color.clear)
                 BannerView()
                     .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
             }
         }
-        .navigationTitle("Saved tools")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationTitle("SAVED TOOLS")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    HStack {
+                        Image(systemName: "chevron.left")
+                            .font(Font.system(size: 16))
+                        Text("Back")
+                            .font(Font.custom("SpaceMono-Regular", size: 17))
+                    }
+                }
+            }
+        }
         .onAppear {
             if let metricInchesCored = toolsMills.first {
                 metricInchesCheck = metricInchesCored.mmOrInch

@@ -6,6 +6,8 @@ struct SavedComponent: View {
     var spindelSpeed: Double
     var feedRate: Double
     @State var openStack = false
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     init(toolName: String, toolDiameter: Double, spindelSpeed: Double, feedRate: Double) {
         self.toolName = toolName
@@ -38,8 +40,10 @@ struct SavedComponent: View {
                 }
             }
             .toggleStyle(.button)
-            .foregroundColor(.white)
-            .font(.custom("SFPro-ExpandedSemiBold", size: 17))
+            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+            .font(.custom("SpaceMono-Bold", size: 17))
+            .textCase(.uppercase)
+            .frame(height: 20)
             if openStack {
                 HStack(alignment: .center) {
                     Spacer()
@@ -55,8 +59,9 @@ struct SavedComponent: View {
                         Text(twoDigits.string(from: NSNumber(value: feedRate)) ?? "")
                     }
                 }
-                .foregroundColor(.white)
-                .font(.custom("SFPro-ExpandedRegular", size: 13))
+                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                .font(.custom("SpaceMono-Bold", size: 13))
+                .textCase(.uppercase)
             }
         }
     }
