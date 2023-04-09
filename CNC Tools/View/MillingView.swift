@@ -3,10 +3,6 @@ import CoreData
 
 // MARK: - MILLING VIEW
 struct MillingView: View {
-    // MARK: - INIT
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "SFPro-ExpandedMedium", size: 34)!]
-        }
     
     // MARK: - ENUMS
     enum Field: Hashable {
@@ -20,6 +16,7 @@ struct MillingView: View {
     
     // MARK: - VARIABLES
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var metricInches: FetchedResults<Tool>
     @State private var toolDiam = 0.0
     @State private var cuttingSpeed = 0.0
@@ -126,18 +123,18 @@ struct MillingView: View {
             VStack {
                 ScrollView (.vertical) {
                     VStack() {
-                        InputComponent(name: "Tool diameter", inputName: "diam", inputValue: tDiam)
+                        InputComponent(name: "TOOL DIAMETER", inputName: "diam", inputValue: tDiam)
                             .focused($focusedField, equals: .toolDiamField)
-                        InputComponent(name: "Cutting speed", inputName: "vc", inputValue: cSpeed)
+                        InputComponent(name: "CUTTING SPEED", inputName: "vc", inputValue: cSpeed)
                             .focused($focusedField, equals: .cutSpeedField)
-                        InputComponent(name: "Spindel speed", inputName: "n", inputValue: sSpeed)
+                        InputComponent(name: "SPINDEL SPEED", inputName: "n", inputValue: sSpeed)
                             .focused($focusedField, equals: .spinSpeedField)
-                        InputComponent(name: "Number of teeth", inputName: "z", inputValue: nOfZ)
+                        InputComponent(name: "NUMBER OF TEETH", inputName: "z", inputValue: nOfZ)
                             .focused($focusedField, equals: .numOfZField)
                             .padding(.top, 19.0)
-                        InputComponent(name: "Feed per tooth ", inputName: "fz", inputValue: fPerTooth)
+                        InputComponent(name: "FEED PER TOOTH", inputName: "fz", inputValue: fPerTooth)
                             .focused($focusedField, equals: .feedPerToothField)
-                        InputComponent(name: "Feed rate", inputName: "vf", inputValue: fRate)
+                        InputComponent(name: "FEED RATE", inputName: "vf", inputValue: fRate)
                             .focused($focusedField, equals: .feedRateField)
                     }
                     .padding(.leading)
@@ -203,6 +200,7 @@ struct MillingView: View {
                         Button("Save") {
                             showAlert = true
                         }
+                        .font(Font.custom("SpaceMono-Regular", size: 17))
                         .alert("Enter tool name.", isPresented: $showAlert, actions: {
                             TextField("Tool name", text: $toolName)
                                 .foregroundColor(.black)
@@ -218,8 +216,23 @@ struct MillingView: View {
                 }
             }
         }
-        .navigationTitle("Milling")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationTitle("MILLING")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    HStack {
+                        Image(systemName: "chevron.left")
+                            .font(Font.system(size: 16))
+                        Text("Back")
+                            .font(Font.custom("SpaceMono-Regular", size: 17))
+                    }
+                }
+            }
+        }
         .onAppear {
             if let metricInchesCored = metricInches.first {
                 metricInchesCheck = metricInchesCored.mmOrInch

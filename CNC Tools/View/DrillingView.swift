@@ -19,6 +19,7 @@ struct DrillingView: View {
     
     // MARK: -  VARIABLES
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var metricInches: FetchedResults<Tool>
     @State private var toolDiam = 0.0
     @State private var cuttingSpeed = 0.0
@@ -186,6 +187,7 @@ struct DrillingView: View {
                         Button("Save") {
                             showAlert = true
                         }
+                        .font(Font.custom("SpaceMono-Regular", size: 17))
                         .alert("Enter tool name.", isPresented: $showAlert, actions: {
                             TextField("Tool name", text: $toolName)
                                 .foregroundColor(.black)
@@ -201,8 +203,23 @@ struct DrillingView: View {
                 }
             }
         }
-        .navigationTitle("Drilling")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationTitle("DRILLING")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    HStack {
+                        Image(systemName: "chevron.left")
+                            .font(Font.system(size: 16))
+                        Text("Back")
+                            .font(Font.custom("SpaceMono-Regular", size: 17))
+                    }
+                }
+            }
+        }
         .onAppear {
             if let metricInchesCored = metricInches.first {
                 metricInchesCheck = metricInchesCored.mmOrInch

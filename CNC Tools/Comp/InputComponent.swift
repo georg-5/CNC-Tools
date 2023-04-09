@@ -24,20 +24,21 @@ struct InputComponent: View {
     }()
 
     var body: some View {
-        VStack {
-            HStack {
-                Text(name)
-                    .font(.custom("SFPro-ExpandedRegular", size: 22))
-                Spacer()
-            }
-            TextField(inputName, value: $inputValue, formatter: twoDigits)
-                .keyboardType(.decimalPad)
-                .onChange(of: inputValue) { newValue in
-                    inputValue = newValue
+        HStack {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(name)
+                        .font(.custom("SpaceMono-Regular", size: 20))
+                    Spacer()
                 }
-                .padding(.top, -10.0)
-                .padding(.bottom, 10.0)
-                .font(.custom("SFPro-ExpandedSemiBold", size: 28))
+                TextField(inputName, value: $inputValue, formatter: twoDigits)
+                    .padding(.top, -22.0)
+                    .keyboardType(.decimalPad)
+                    .onChange(of: inputValue) { newValue in
+                        inputValue = newValue
+                    }
+                    .font(.custom("SpaceMono-Bold", size: 28))
+            }
         }
     }
 }

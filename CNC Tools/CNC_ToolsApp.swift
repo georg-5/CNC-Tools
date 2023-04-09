@@ -7,7 +7,6 @@ struct CNC_ToolsApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
-                .colorScheme(.dark)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

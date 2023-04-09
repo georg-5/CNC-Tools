@@ -7,7 +7,6 @@ import StoreKit
 class AppState: ObservableObject {
     @Published var metricInchesCheck = true
 }
-
 class ReviewManager: ObservableObject {
     private let appLaunchCountKey = "appLaunchCount"
     private let nextRequestReviewCountKey = "nextRequestReviewCount"
@@ -55,8 +54,16 @@ class ReviewManager: ObservableObject {
 
 // MARK: - MAIN VIEW
 struct MainView: View {
+    // MARK: - INIT
+    init() {
+        UINavigationBar.appearance().titleTextAttributes = [
+            .foregroundColor: UIColor.systemBlue,
+            .font : UIFont(name: "SpaceMono-Bold", size: 18)!]
+        }
+    
     // MARK: - VARIABLES
     @Environment(\.managedObjectContext) private var viewContext
+    @Environment(\.colorScheme) var colorScheme
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Tool.mmOrInch, ascending: true)],
                   animation: .default)
     private var metricInches: FetchedResults<Tool>
@@ -99,58 +106,92 @@ struct MainView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                BannerView()
-                    .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
-                Spacer().frame(height: 190.0)
+            HStack {
                 VStack {
-                    NavigationLink(destination: MillingView()) {
-                        Text("MILLING")
+                    // 1ST ROW
+                    MainComponent(categoryName: "REGIMES CALCULATING",
+                                  categoryLogo: "number",
+                                  navNameColumnOne: ["MILLING", "TURNING"],
+                                  navNameColumnTwo: ["DRILLING", "TOLERANCES"],
+                                  navViewColumnOne: [{ AnyView(MillingView()) }, { AnyView(TurningView()) }],
+                                  navViewColumnTwo: [{ AnyView(DrillingView()) }, { AnyView(ToleranceView()) }]
+                    )
+                    Spacer().frame(height: 30)
+                    // 2ND ROW
+                    MainComponent(categoryName: "TRIGONOMETRY",
+                                  categoryLogo: "angle",
+                                  navNameColumnOne: ["RECTANGULAR"],
+                                  navNameColumnTwo: [],
+                                  navViewColumnOne: [{ AnyView(TriangleView()) }],
+                                  navViewColumnTwo: []
+                    )
+                    Spacer().frame(height: 40)
+                    // 3RD ROW
+                    HStack {
+                        Image(systemName: "skew")
+                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        Text("CNC")
+                        Spacer()
                     }
-                    NavigationLink(destination: TurningView()) {
-                        Text("TURNING")
-                    }
-                    NavigationLink(destination: DrillingView()) {
-                        Text("DRILLING")
-                    }
+                    .padding(.leading)
+                    .padding(.top, -10)
+                    .font(.custom("SpaceMono-Bold", size: 17))
                     Divider()
-                    NavigationLink(destination: TriangleView()) {
-                        Text("TRIANGLE")
-                    }
-                }
-                .font(.custom("SFPro-ExpandedHeavy", size: 50))
-                HStack(spacing: 25.0) {
-                    if checkValuesInCoreData() {
-                        NavigationLink(destination: SavedToolsView()) {
-                            Image(systemName: "rectangle.stack")
-                        }
-                    } else {
-                        Button(action: {
-                            showAlertForSavedTool = true
-                        }, label: {
-                            Image(systemName: "rectangle.stack")
-                        })
-                        .alert(isPresented: $showAlertForSavedTool) {
-                                Alert(
-                                    title: Text("No saved tools yet!")
-                                )
+                        .padding(.horizontal)
+                        .padding(.top, -10.0)
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading, spacing: -5.0) {
+                            if checkValuesInCoreData() {
+                                NavigationLink(destination: SavedToolsView()) {
+                                    Text("TOOLS")
+                                }
+                            } else {
+                                Button(action: {
+                                    showAlertForSavedTool = true
+                                }, label: {
+                                    Text("TOOLS")
+                                })
+                                .alert(isPresented: $showAlertForSavedTool) {
+                                    Alert(
+                                        title: Text("No saved tools yet!")
+                                    )
+                                }
                             }
+                        }
+                        Spacer()
+                        VStack(alignment: .leading, spacing: -5.0) {
+
+                        }
+                        Spacer()
                     }
-                    NavigationLink(destination: SettingsView()) {
-                        Image(systemName: "gearshape")
-                    }
+                    .padding(.trailing)
+                    .padding(.leading, 20.0)
+                    .padding(.top, -17.0)
+                    .font(.custom("SpaceMono-Bold", size: 28))
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    Spacer()
+                    BannerView()
+                        .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
                 }
-                .padding(.top)
-                .font(.system(size: 30))
-                Spacer()
-                Text("CNC TOOLS")
-                    .font(.custom("SFPro-ExpandedUltraLight", size: 15))
             }
-            .foregroundColor(.white)
             .onAppear {
                 reviewManager.showReviewAlertAfterDelay()
                 if let metricInchesCored = metricInches.first {
                     appState.metricInchesCheck = metricInchesCored.mmOrInch
+                }
+            }
+            .navigationTitle("CNC TOOLS")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem {
+                    HStack(alignment: .center) {
+                        NavigationLink(destination: SettingsView()) {
+                            Image(systemName: "gearshape")
+                                .resizable()
+                                .frame(width: 17, height: 17)
+                                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                        }
+                    }
                 }
             }
         }

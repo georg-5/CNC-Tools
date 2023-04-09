@@ -1,19 +1,16 @@
 import SwiftUI
 import CoreData
 
-// MARK: - TURNING VIEW
-struct TurningView: View {
-    // MARK: - INIT
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "SFPro-ExpandedMedium", size: 34)!]
-        }
+// MARK: - MILLING VIEW
+struct ToleranceView: View {
     
     // MARK: - ENUMS
     enum Field: Hashable {
         case toolDiamField
         case cutSpeedField
         case spinSpeedField
-        case feedPerRevField
+        case numOfZField
+        case feedPerToothField
         case feedRateField
     }
     
@@ -24,7 +21,8 @@ struct TurningView: View {
     @State private var toolDiam = 0.0
     @State private var cuttingSpeed = 0.0
     @State private var spindelSpeed = 0.0
-    @State private var feedPerRev = 0.0
+    @State private var numOfZ = 0.0
+    @State private var feedPerTooth = 0.0
     @State private var feedRate = 0.0
     @FocusState private var focusedField: Field?
     @State private var showAlert = false
@@ -34,11 +32,11 @@ struct TurningView: View {
     // MARK: - FUNCTIONS
     func saveTool() {
         let newTool = Tool(context: viewContext)
-            newTool.outerDiameter = toolDiam
-            newTool.spindelSpeedTurn = spindelSpeed
-            newTool.feedRateTurn = feedRate
-            newTool.toolNameTurns = toolName
-            newTool.toolType = "turning"
+            newTool.toolDiameterMill = toolDiam
+            newTool.spindelSpeed = spindelSpeed
+            newTool.feedRate = feedRate
+            newTool.toolNameMills = toolName
+            newTool.toolType = "milling"
             do {
                 try viewContext.save()
                 print("Tool saved successfully")
@@ -61,11 +59,11 @@ struct TurningView: View {
             spindelSpeed = (cuttingSpeed * 12.0) / (Double.pi * toolDiam)
         }
     }
-    func feedPerRevFunc() {
-        feedPerRev = feedRate / spindelSpeed
+    func feedPerToothFunc() {
+        feedPerTooth = feedRate / (spindelSpeed * numOfZ)
     }
     func feedRateFunc() {
-        feedRate = feedPerRev * spindelSpeed
+        feedRate = feedPerTooth * spindelSpeed * numOfZ
     }
     
     var body: some View {
@@ -96,9 +94,18 @@ struct TurningView: View {
                     }
                 }
             )
-            let fPerRev = Binding (
-                get: { feedPerRev },
-                set: { feedPerRev = $0
+            let nOfZ = Binding (
+                get: { numOfZ },
+                set: { numOfZ = $0
+                    if $0 > 0.0 {
+                        feedRateFunc()
+                        feedPerToothFunc()
+                    }
+                }
+            )
+            let fPerTooth = Binding (
+                get: { feedPerTooth },
+                set: { feedPerTooth = $0
                     if $0 > 0.0 {
                         feedRateFunc()
                     }
@@ -108,7 +115,7 @@ struct TurningView: View {
                 get: { feedRate },
                 set: { feedRate = $0
                     if $0 > 0.0 {
-                        feedPerRevFunc()
+                        feedPerToothFunc()
                     }
                 }
             )
@@ -116,16 +123,18 @@ struct TurningView: View {
             VStack {
                 ScrollView (.vertical) {
                     VStack() {
-                        InputComponent(name: "Outer diameter", inputName: "diam", inputValue: tDiam)
+                        InputComponent(name: "TOOL DIAMETER", inputName: "diam", inputValue: tDiam)
                             .focused($focusedField, equals: .toolDiamField)
-                        InputComponent(name: "Cutting speed", inputName: "vc", inputValue: cSpeed)
+                        InputComponent(name: "CUTTING SPEED", inputName: "vc", inputValue: cSpeed)
                             .focused($focusedField, equals: .cutSpeedField)
-                        InputComponent(name: "Spindel speed", inputName: "n", inputValue: sSpeed)
+                        InputComponent(name: "SPINDEL SPEED", inputName: "n", inputValue: sSpeed)
                             .focused($focusedField, equals: .spinSpeedField)
-                        InputComponent(name: "Feed per revolution", inputName: "fr", inputValue: fPerRev)
-                            .focused($focusedField, equals: .feedPerRevField)
+                        InputComponent(name: "NUMBER OF TEETH", inputName: "z", inputValue: nOfZ)
+                            .focused($focusedField, equals: .numOfZField)
                             .padding(.top, 19.0)
-                        InputComponent(name: "Feed rate", inputName: "vf", inputValue: fRate)
+                        InputComponent(name: "FEED PER TOOTH", inputName: "fz", inputValue: fPerTooth)
+                            .focused($focusedField, equals: .feedPerToothField)
+                        InputComponent(name: "FEED RATE", inputName: "vf", inputValue: fRate)
                             .focused($focusedField, equals: .feedRateField)
                     }
                     .padding(.leading)
@@ -149,10 +158,12 @@ struct TurningView: View {
                                 focusedField = .toolDiamField
                             case .spinSpeedField:
                                 focusedField = .cutSpeedField
-                            case .feedPerRevField:
+                            case .numOfZField:
                                 focusedField = .spinSpeedField
+                            case .feedPerToothField:
+                                focusedField = .numOfZField
                             case .feedRateField:
-                                focusedField = .feedPerRevField
+                                focusedField = .feedPerToothField
                             default:
                                 focusedField = nil
                             }
@@ -166,8 +177,10 @@ struct TurningView: View {
                             case .cutSpeedField:
                                 focusedField = .spinSpeedField
                             case .spinSpeedField:
-                                focusedField = .feedPerRevField
-                            case .feedPerRevField:
+                                focusedField = .numOfZField
+                            case .numOfZField:
+                                focusedField = .feedPerToothField
+                            case .feedPerToothField:
                                 focusedField = .feedRateField
                             default:
                                 focusedField = nil
@@ -203,7 +216,7 @@ struct TurningView: View {
                 }
             }
         }
-        .navigationTitle("TURNING")
+        .navigationTitle("MILLING")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -231,8 +244,8 @@ struct TurningView: View {
 }
 
 // MARK: - SIMULATOR PREVIEW
-struct TurningView_Previews: PreviewProvider {
+struct ToleranceView_Previews: PreviewProvider {
     static var previews: some View {
-        TurningView()
+        MillingView()
     }
 }
