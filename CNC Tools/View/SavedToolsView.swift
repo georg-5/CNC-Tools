@@ -63,7 +63,7 @@ struct SavedToolsView: View {
                         .font(.custom("SpaceMono-Regular", size: 12))
                     }
                 }
-                .listRowBackground(Color.clear)
+                .scrollContentBackground(.hidden)
                 BannerView()
                     .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
             }

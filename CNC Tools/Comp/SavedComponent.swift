@@ -30,8 +30,10 @@ struct SavedComponent: View {
                 HStack(alignment: .center) {
                     if openStack {
                         Image(systemName: "chevron.down")
+                            .font(Font.system(size: 16))
                     } else {
                         Image(systemName: "chevron.right")
+                            .font(Font.system(size: 16))
                     }
                     Text("Ø")
                     Text(twoDigits.string(from: NSNumber(value: toolDiameter)) ?? "")

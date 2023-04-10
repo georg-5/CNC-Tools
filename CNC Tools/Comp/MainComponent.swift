@@ -53,7 +53,7 @@ struct MainComponent: View {
             .padding(.trailing)
             .padding(.leading, 20.0)
             .padding(.top, -17.0)
-            .font(.custom("SpaceMono-Bold", size: 28))
+            .font(.custom("SpaceMono-Regular", size: 22))
             .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
         }
     }
