@@ -112,11 +112,12 @@ struct MainView: View {
                     MainComponent(categoryName: "REGIMES CALCULATING",
                                   categoryLogo: "number",
                                   navNameColumnOne: ["MILLING", "TURNING"],
-                                  navNameColumnTwo: ["DRILLING", "TOLERANCES"],
+                                  navNameColumnTwo: ["DRILLING"],
                                   navViewColumnOne: [{ AnyView(MillingView()) }, { AnyView(TurningView()) }],
-                                  navViewColumnTwo: [{ AnyView(DrillingView()) }, { AnyView(ToleranceView()) }]
+                                  navViewColumnTwo: [{ AnyView(DrillingView()) }]
                     )
                     Spacer().frame(height: 30)
+                    /*
                     // 2ND ROW
                     MainComponent(categoryName: "TRIGONOMETRY",
                                   categoryLogo: "angle",
@@ -126,6 +127,7 @@ struct MainView: View {
                                   navViewColumnTwo: []
                     )
                     Spacer().frame(height: 40)
+                     */
                     // 3RD ROW
                     HStack {
                         Image(systemName: "skew")
