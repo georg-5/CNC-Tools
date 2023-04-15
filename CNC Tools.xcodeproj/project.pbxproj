@@ -125,7 +125,6 @@
 		56EEB98929C7AB4F009894D1 = {
 			isa = PBXGroup;
 			children = (
-				5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */,
 				56EEB99429C7AB4F009894D1 /* CNC Tools */,
 				565D2EAE29E9E11E00FA3F95 /* CNC Tools.app */,
 				565D2EAF29E9E11E00FA3F95 /* CNC ToolsUITests.xctest */,
@@ -135,6 +134,7 @@
 		56EEB99429C7AB4F009894D1 /* CNC Tools */ = {
 			isa = PBXGroup;
 			children = (
+				5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */,
 				56EEB9AC29C7AC2A009894D1 /* Fonts */,
 				56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */,
 				56B38CE229D98C1F0091F421 /* View */,
@@ -462,7 +462,7 @@
 				DEVELOPMENT_TEAM = NA69BPW4YG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "CNC-Tools-Info.plist";
+				INFOPLIST_FILE = "CNC Tools/CNC-Tools-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -497,7 +497,7 @@
 				DEVELOPMENT_TEAM = NA69BPW4YG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "CNC-Tools-Info.plist";
+				INFOPLIST_FILE = "CNC Tools/CNC-Tools-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
