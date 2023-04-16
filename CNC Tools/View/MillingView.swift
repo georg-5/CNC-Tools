@@ -245,6 +245,11 @@ struct MillingView: View {
             }
             SKPaymentQueue.default().add(storeKitManager)
         }
+        .onReceive(storeKitManager.$product) { product in
+            if let _ = product {
+                storeKitManager.purchaseProduct()
+            }
+        }
         .onTapToDismissKeyboard()
         
     }

@@ -4,7 +4,7 @@ import StoreKit
 class StoreKitManager: NSObject, ObservableObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     @Published var premiumUnlocked: Bool = UserDefaults.standard.bool(forKey: "premiumUnlocked")
     var productRequest: SKProductsRequest!
-    var product: SKProduct?
+    @Published var product: SKProduct?
     
     func getProducts() {
         let productIdentifiers = Set(["RemoveAD_and_ADDFUNCS"])

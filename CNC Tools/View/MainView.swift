@@ -194,6 +194,11 @@ struct MainView: View {
                 }
                 SKPaymentQueue.default().add(storeKitManager)
             }
+            .onReceive(storeKitManager.$product) { product in
+                if let _ = product {
+                    storeKitManager.purchaseProduct()
+                }
+            }
             .navigationTitle("CNC TOOLS")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
