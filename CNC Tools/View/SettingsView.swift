@@ -93,7 +93,7 @@ struct SettingsView: View {
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
-                    HStack {
+                    HStack(alignment: .center) {
                         Image(systemName: "chevron.left")
                             .font(Font.system(size: 16))
                         Text("Back")

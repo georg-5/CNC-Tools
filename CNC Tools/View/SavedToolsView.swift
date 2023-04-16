@@ -80,11 +80,11 @@ struct SavedToolsView: View {
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
-                    HStack {
+                    HStack(alignment: .center) {
                         Image(systemName: "chevron.left")
                             .font(Font.system(size: 16))
                         Text("Back")
-                            .font(Font.custom("SpaceMono-Regular", size: 17))
+                            .font(Font.custom("TestSohne-Buch", size: 17))
                     }
                 }
             }

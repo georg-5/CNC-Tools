@@ -189,7 +189,7 @@ struct DrillingView: View {
                             Button("Save") {
                                 showAlert = true
                             }
-                            .font(Font.custom("SpaceMono-Regular", size: 17))
+                            .font(Font.custom("TestSohne-Buch", size: 17))
                             .alert("Enter tool name.", isPresented: $showAlert, actions: {
                                 TextField("Tool name", text: $toolName)
                                     .foregroundColor(.black)
@@ -214,11 +214,11 @@ struct DrillingView: View {
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
-                    HStack {
+                    HStack(alignment: .center) {
                         Image(systemName: "chevron.left")
                             .font(Font.system(size: 16))
                         Text("Back")
-                            .font(Font.custom("SpaceMono-Regular", size: 17))
+                            .font(Font.custom("TestSohne-Buch", size: 17))
                     }
                 }
             }
