@@ -3,64 +3,14 @@ import CoreData
 import GoogleMobileAds
 import StoreKit
 
-// MARK: - CLASSES
-class AppState: ObservableObject {
-    @Published var metricInchesCheck = true
-}
-class ReviewManager: ObservableObject {
-    private let appLaunchCountKey = "appLaunchCount"
-    private let nextRequestReviewCountKey = "nextRequestReviewCount"
-    private let minimumLaunchesBeforeReview = 3
-    private let additionalLaunchesBeforeReview = 5
-
-    init() {
-        incrementLaunchCount()
-    }
-
-    private func incrementLaunchCount() {
-        let currentCount = UserDefaults.standard.integer(forKey: appLaunchCountKey)
-        UserDefaults.standard.set(currentCount + 1, forKey: appLaunchCountKey)
-    }
-
-    private func shouldRequestReview() -> Bool {
-        let currentCount = UserDefaults.standard.integer(forKey: appLaunchCountKey)
-        let nextRequestReviewCount = UserDefaults.standard.integer(forKey: nextRequestReviewCountKey)
-
-        if currentCount >= nextRequestReviewCount {
-            UserDefaults.standard.set(currentCount + additionalLaunchesBeforeReview, forKey: nextRequestReviewCountKey)
-            return true
-        }
-
-        return false
-    }
-
-    func requestReview() {
-        if shouldRequestReview(),
-           let scene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene {
-            SKStoreReviewController.requestReview(in: scene)
-        }
-    }
-
-    func showReviewAlertAfterDelay() {
-        if UserDefaults.standard.integer(forKey: nextRequestReviewCountKey) == 0 {
-            UserDefaults.standard.set(minimumLaunchesBeforeReview, forKey: nextRequestReviewCountKey)
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 800) {
-            self.requestReview()
-        }
-    }
-}
-
-// MARK: - MAIN VIEW
 struct MainView: View {
-    // MARK: - INIT
+    // MARK: - Initilization
     init() {
         UINavigationBar.appearance().titleTextAttributes = [
             .font : UIFont(name: "TestSohne-Halbfett", size: 17)!]
         }
     
-    // MARK: - VARIABLES
+    // MARK: - Variables
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.colorScheme) var colorScheme
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Tool.mmOrInch, ascending: true)],
@@ -73,7 +23,7 @@ struct MainView: View {
     @State private var showAlertForSavedTool = false
     @State private var showAlertForPremium = false
     
-    // MARK: - FUNCTIONS
+    // MARK: - Functions
     private func checkValuesInCoreData() -> Bool {
            let sumOuterDiameter = sumOfAttribute("outerDiameter")
            let sumToolDiameterMills = sumOfAttribute("toolDiameterMill")
@@ -105,6 +55,7 @@ struct MainView: View {
         }
     }
 
+    // MARK: - Body
     var body: some View {
         NavigationView {
             HStack {
@@ -217,7 +168,7 @@ struct MainView: View {
     }
 }
 
-// MARK: - SIMULATOR PREVIEW
+// MARK: - Simulator Preview
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()

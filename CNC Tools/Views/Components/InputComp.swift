@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct InputComponent: View {
-    // MARK: - VARIABLES
+
     var name: String
     var inputName: String
     @Binding var inputValue: Double

@@ -10,13 +10,15 @@
 		5628BF5C29DDEBE60041DDB7 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5628BF5B29DDEBE60041DDB7 /* TriangleView.swift */; };
 		563966FD29EB34A900954605 /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563966FC29EB34A900954605 /* StoreKitManager.swift */; };
 		563966FF29EC04D500954605 /* CNC Tools.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 563966FE29EB421700954605 /* CNC Tools.storekit */; };
+		569F1BE129EC69C7009C93E2 /* ReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F1BE029EC69C7009C93E2 /* ReviewManager.swift */; };
+		569F1BE329EC6A26009C93E2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F1BE229EC6A26009C93E2 /* AppState.swift */; };
 		56B38CD129D8BDB40091F421 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B38CD029D8BDB40091F421 /* BannerView.swift */; };
-		56B4CAB029E1EB9200992CC2 /* MainComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4CAAF29E1EB9200992CC2 /* MainComponent.swift */; };
+		56B4CAB029E1EB9200992CC2 /* MainComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4CAAF29E1EB9200992CC2 /* MainComp.swift */; };
 		56B4CAB729E3534C00992CC2 /* ToleranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B4CAB629E3534C00992CC2 /* ToleranceView.swift */; };
 		56CF5B9E29D1A93200A1A355 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5B9D29D1A93200A1A355 /* Extensions.swift */; };
 		56CF5BA229D21C6E00A1A355 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BA129D21C6E00A1A355 /* SettingsView.swift */; };
 		56CF5BA829D4B39600A1A355 /* SavedToolsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BA729D4B39600A1A355 /* SavedToolsView.swift */; };
-		56CF5BAC29D4D45700A1A355 /* SavedComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BAB29D4D45700A1A355 /* SavedComponent.swift */; };
+		56CF5BAC29D4D45700A1A355 /* SavedComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BAB29D4D45700A1A355 /* SavedComp.swift */; };
 		56CF5BAE29D76C5800A1A355 /* TurningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BAD29D76C5800A1A355 /* TurningView.swift */; };
 		56CF5BB029D76FA200A1A355 /* DrillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BAF29D76FA200A1A355 /* DrillingView.swift */; };
 		56E748D629EAADB90016A464 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 56E748D529EAADB90016A464 /* GoogleMobileAds */; };
@@ -27,7 +29,7 @@
 		56EEB9A929C7AB5F009894D1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB9A829C7AB5F009894D1 /* MainView.swift */; };
 		56EEB9AD29C7AC2A009894D1 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 56EEB9AC29C7AC2A009894D1 /* Fonts */; };
 		56EEB9B029C7ACEA009894D1 /* MillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB9AF29C7ACEA009894D1 /* MillingView.swift */; };
-		56EEB9B229C7B2D8009894D1 /* InputComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB9B129C7B2D8009894D1 /* InputComponent.swift */; };
+		56EEB9B229C7B2D8009894D1 /* InputComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB9B129C7B2D8009894D1 /* InputComp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,13 +62,15 @@
 		565D2EAE29E9E11E00FA3F95 /* CNC Tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CNC Tools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		565D2EAF29E9E11E00FA3F95 /* CNC ToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CNC ToolsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CNC-Tools-Info.plist"; sourceTree = "<group>"; };
+		569F1BE029EC69C7009C93E2 /* ReviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewManager.swift; sourceTree = "<group>"; };
+		569F1BE229EC6A26009C93E2 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		56B38CD029D8BDB40091F421 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
-		56B4CAAF29E1EB9200992CC2 /* MainComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainComponent.swift; sourceTree = "<group>"; };
+		56B4CAAF29E1EB9200992CC2 /* MainComp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainComp.swift; sourceTree = "<group>"; };
 		56B4CAB629E3534C00992CC2 /* ToleranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToleranceView.swift; sourceTree = "<group>"; };
 		56CF5B9D29D1A93200A1A355 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		56CF5BA129D21C6E00A1A355 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		56CF5BA729D4B39600A1A355 /* SavedToolsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedToolsView.swift; sourceTree = "<group>"; };
-		56CF5BAB29D4D45700A1A355 /* SavedComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedComponent.swift; sourceTree = "<group>"; };
+		56CF5BAB29D4D45700A1A355 /* SavedComp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedComp.swift; sourceTree = "<group>"; };
 		56CF5BAD29D76C5800A1A355 /* TurningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurningView.swift; sourceTree = "<group>"; };
 		56CF5BAF29D76FA200A1A355 /* DrillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillingView.swift; sourceTree = "<group>"; };
 		56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNC_ToolsApp.swift; sourceTree = "<group>"; };
@@ -76,7 +80,7 @@
 		56EEB9A829C7AB5F009894D1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		56EEB9AC29C7AC2A009894D1 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
 		56EEB9AF29C7ACEA009894D1 /* MillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MillingView.swift; sourceTree = "<group>"; };
-		56EEB9B129C7B2D8009894D1 /* InputComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputComponent.swift; sourceTree = "<group>"; };
+		56EEB9B129C7B2D8009894D1 /* InputComp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputComp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 			children = (
 				563966FC29EB34A900954605 /* StoreKitManager.swift */,
 				563966FE29EB421700954605 /* CNC Tools.storekit */,
+				569F1BE029EC69C7009C93E2 /* ReviewManager.swift */,
 			);
 			path = IAP;
 			sourceTree = "<group>";
@@ -114,19 +119,47 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		56B38CE129D98BE80091F421 /* Comp */ = {
+		569F1BDC29EC66B0009C93E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				56EEB9B129C7B2D8009894D1 /* InputComponent.swift */,
-				56B4CAAF29E1EB9200992CC2 /* MainComponent.swift */,
-				56CF5BAB29D4D45700A1A355 /* SavedComponent.swift */,
+				56EEB9A029C7AB50009894D1 /* CNC_Tools.xcdatamodeld */,
 			);
-			path = Comp;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		56B38CE229D98C1F0091F421 /* View */ = {
+		569F1BDE29EC6706009C93E2 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				569F1BE229EC6A26009C93E2 /* AppState.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		569F1BDF29EC6714009C93E2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				563966F629EB28BD00954605 /* IAP */,
+				56EEB9AC29C7AC2A009894D1 /* Fonts */,
+				56EEB99E29C7AB50009894D1 /* Persistence.swift */,
+				56CF5B9D29D1A93200A1A355 /* Extensions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		569F1BE429EC6A72009C93E2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				56EEB9B129C7B2D8009894D1 /* InputComp.swift */,
+				56B4CAAF29E1EB9200992CC2 /* MainComp.swift */,
+				56CF5BAB29D4D45700A1A355 /* SavedComp.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		56B38CE229D98C1F0091F421 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				569F1BE429EC6A72009C93E2 /* Components */,
 				56EEB9A829C7AB5F009894D1 /* MainView.swift */,
 				56B4CAB629E3534C00992CC2 /* ToleranceView.swift */,
 				5628BF5B29DDEBE60041DDB7 /* TriangleView.swift */,
@@ -137,7 +170,7 @@
 				56CF5BA129D21C6E00A1A355 /* SettingsView.swift */,
 				56CF5BA729D4B39600A1A355 /* SavedToolsView.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		56EEB98929C7AB4F009894D1 = {
@@ -152,17 +185,14 @@
 		56EEB99429C7AB4F009894D1 /* CNC Tools */ = {
 			isa = PBXGroup;
 			children = (
+				569F1BDC29EC66B0009C93E2 /* Models */,
+				56B38CE229D98C1F0091F421 /* Views */,
+				569F1BDE29EC6706009C93E2 /* ViewModels */,
+				569F1BDF29EC6714009C93E2 /* Utilities */,
 				563966FB29EB33C700954605 /* Preview Content */,
-				563966F629EB28BD00954605 /* IAP */,
-				5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */,
-				56EEB9AC29C7AC2A009894D1 /* Fonts */,
 				56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */,
-				56B38CE229D98C1F0091F421 /* View */,
-				56CF5B9D29D1A93200A1A355 /* Extensions.swift */,
-				56B38CE129D98BE80091F421 /* Comp */,
+				5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */,
 				56EEB99929C7AB50009894D1 /* Assets.xcassets */,
-				56EEB99E29C7AB50009894D1 /* Persistence.swift */,
-				56EEB9A029C7AB50009894D1 /* CNC_Tools.xcdatamodeld */,
 			);
 			path = "CNC Tools";
 			sourceTree = "<group>";
@@ -284,19 +314,21 @@
 			files = (
 				56EEB99F29C7AB50009894D1 /* Persistence.swift in Sources */,
 				56CF5BB029D76FA200A1A355 /* DrillingView.swift in Sources */,
-				56EEB9B229C7B2D8009894D1 /* InputComponent.swift in Sources */,
+				569F1BE329EC6A26009C93E2 /* AppState.swift in Sources */,
+				56EEB9B229C7B2D8009894D1 /* InputComp.swift in Sources */,
 				56CF5BA829D4B39600A1A355 /* SavedToolsView.swift in Sources */,
-				56CF5BAC29D4D45700A1A355 /* SavedComponent.swift in Sources */,
+				56CF5BAC29D4D45700A1A355 /* SavedComp.swift in Sources */,
 				56CF5BA229D21C6E00A1A355 /* SettingsView.swift in Sources */,
 				56B4CAB729E3534C00992CC2 /* ToleranceView.swift in Sources */,
 				56CF5B9E29D1A93200A1A355 /* Extensions.swift in Sources */,
 				56EEB9A229C7AB50009894D1 /* CNC_Tools.xcdatamodeld in Sources */,
-				56B4CAB029E1EB9200992CC2 /* MainComponent.swift in Sources */,
+				56B4CAB029E1EB9200992CC2 /* MainComp.swift in Sources */,
 				56EEB9A929C7AB5F009894D1 /* MainView.swift in Sources */,
 				5628BF5C29DDEBE60041DDB7 /* TriangleView.swift in Sources */,
 				56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */,
 				56EEB9B029C7ACEA009894D1 /* MillingView.swift in Sources */,
 				56B38CD129D8BDB40091F421 /* BannerView.swift in Sources */,
+				569F1BE129EC69C7009C93E2 /* ReviewManager.swift in Sources */,
 				563966FD29EB34A900954605 /* StoreKitManager.swift in Sources */,
 				56CF5BAE29D76C5800A1A355 /* TurningView.swift in Sources */,
 			);

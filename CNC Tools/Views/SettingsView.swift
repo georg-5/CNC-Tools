@@ -3,7 +3,7 @@ import CoreData
 import StoreKit
 
 struct SettingsView: View {
-    // MARK: - VARIABLES
+    // MARK: - Variables
     @State private var chooseMmOrInch: Bool = true  // true - MM, false - INCH
     @StateObject private var storeKitManager = StoreKitManager()
     @Environment(\.colorScheme) var colorScheme
@@ -11,7 +11,7 @@ struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var tools: FetchedResults<Tool>
 
-    // MARK: - FUNCTIONS
+    // MARK: - Functions
     func updateMetricInches() {
         let metricInches: Tool = tools.first ?? Tool(context: viewContext)
         metricInches.mmOrInch = chooseMmOrInch
@@ -24,11 +24,12 @@ struct SettingsView: View {
         }
     }
 
+    // MARK: - Body
     var body: some View {
         NavigationView {
             HStack {
                 VStack(alignment: .leading) {
-                    // MARK: - UNITS
+                    //MARK: - Units
                     HStack {
                         Text("Units of measurements")
                             .foregroundColor(.blue)
@@ -54,7 +55,7 @@ struct SettingsView: View {
                     .font(.custom("TestSohne-Halbfett", size: 28))
                     .foregroundColor(.black)
                     
-                    // MARK: - STORE MANAGER
+                    // MARK: - Premium
                     HStack {
                         Text("Buy Premium & Remove ADs")
                             .foregroundColor(.blue)

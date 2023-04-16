@@ -2,10 +2,9 @@ import SwiftUI
 import CoreData
 import StoreKit
 
-// MARK: - TURNING VIEW
 struct TurningView: View {
     
-    // MARK: - ENUMS
+    // MARK: - Enums
     enum Field: Hashable {
         case toolDiamField
         case cutSpeedField
@@ -14,7 +13,7 @@ struct TurningView: View {
         case feedRateField
     }
     
-    // MARK: - VARIABLES
+    // MARK: - Variables
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var metricInches: FetchedResults<Tool>
@@ -29,7 +28,7 @@ struct TurningView: View {
     @State private var toolName = ""
     @State private var metricInchesCheck = true    // true - MM, false - INCH
     
-    // MARK: - FUNCTIONS
+    // MARK: - Functions
     func saveTool() {
         let newTool = Tool(context: viewContext)
             newTool.outerDiameter = toolDiam
@@ -66,8 +65,9 @@ struct TurningView: View {
         feedRate = feedPerRev * spindelSpeed
     }
     
+    // MARK: - Body
     var body: some View {
-        // MARK: - BINDINGS
+        // MARK: - Bindings
             let tDiam = Binding (
                 get: { toolDiam },
                 set: { toolDiam = $0
@@ -238,7 +238,7 @@ struct TurningView: View {
     }
 }
 
-// MARK: - SIMULATOR PREVIEW
+// MARK: - Simulator Preview
 struct TurningView_Previews: PreviewProvider {
     static var previews: some View {
         TurningView()
