@@ -57,8 +57,7 @@ struct MainView: View {
     // MARK: - INIT
     init() {
         UINavigationBar.appearance().titleTextAttributes = [
-            .foregroundColor: UIColor.systemBlue,
-            .font : UIFont(name: "SpaceMono-Bold", size: 18)!]
+            .font : UIFont(name: "TestSohne-Halbfett", size: 17)!]
         }
     
     // MARK: - VARIABLES
@@ -111,10 +110,10 @@ struct MainView: View {
             HStack {
                 VStack {
                     // 1ST ROW
-                    MainComponent(categoryName: "REGIMES CALCULATING",
+                    MainComponent(categoryName: "Regimes Calculating",
                                   categoryLogo: "number",
-                                  navNameColumnOne: ["MILLING", "TURNING"],
-                                  navNameColumnTwo: ["DRILLING"],
+                                  navNameColumnOne: ["Milling", "Turning"],
+                                  navNameColumnTwo: ["Drilling"],
                                   navViewColumnOne: [{ AnyView(MillingView()) }, { AnyView(TurningView()) }],
                                   navViewColumnTwo: [{ AnyView(DrillingView()) }]
                     )
@@ -132,28 +131,24 @@ struct MainView: View {
                      */
                     // 3RD ROW
                     HStack(alignment: .center) {
-                        Spacer()
-                        Text("CNC")
+                        Text("Others")
                         Spacer()
                     }
-                    .font(.custom("SpaceMono-Bold", size: 17))
-                    .padding(.top, -10)
-                    Divider()
-                        .padding(.horizontal)
-                        .padding(.top, -10.0)
+                    .padding(.leading)
+                    .font(.custom("TestSohne-Halbfett", size: 20))
+                    .foregroundColor(.blue)
                     HStack(alignment: .top) {
-                        Spacer()
-                        VStack(alignment: .center, spacing: -5.0) {
+                        VStack(alignment: .leading, spacing: -5.0) {
                             if storeKitManager.premiumUnlocked {
                                 if checkValuesInCoreData() {
                                     NavigationLink(destination: SavedToolsView()) {
-                                        Text("SAVED TOOLS")
+                                        Text("Saved Tools")
                                     }
                                 } else {
                                     Button(action: {
                                         showAlertForSavedTool = true
                                     }, label: {
-                                        Text("SAVED TOOLS")
+                                        Text("Saved Tools")
                                     })
                                     .alert(isPresented: $showAlertForSavedTool) {
                                         Alert(
@@ -165,7 +160,7 @@ struct MainView: View {
                                 Button(action: {
                                     showAlertForPremium = true
                                 }, label: {
-                                    Text("SAVED TOOLS")
+                                    Text("Saved Tools")
                                 })
                                 .alert(isPresented: $showAlertForPremium) {
                                     Alert(
@@ -181,11 +176,10 @@ struct MainView: View {
                          Spacer()
                          */
                     }
-                    .padding(.trailing)
-                    .padding(.leading, 20.0)
-                    .padding(.top, -17.0)
-                    .font(.custom("SpaceMono-Bold", size: 28))
-                    .foregroundColor(.blue)
+                    .padding(.top, -15.0)
+                    .padding(.horizontal)
+                    .font(.custom("TestSohne-Halbfett", size: 44))
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     Spacer()
                     if storeKitManager.premiumUnlocked == false {
                         BannerView()

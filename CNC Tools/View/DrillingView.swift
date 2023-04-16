@@ -5,9 +5,6 @@ import StoreKit
 // MARK: - DRILLING VIEW
 struct DrillingView: View {
     // MARK: - INIT
-    init() {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "SFPro-ExpandedMedium", size: 34)!]
-        }
     
     // MARK: - ENUMS
     enum Field: Hashable {

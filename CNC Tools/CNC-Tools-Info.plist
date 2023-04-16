@@ -209,11 +209,9 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Fonts/SF-Pro.ttf</string>
-		<string>Fonts/SpaceMono-Bold.ttf</string>
-		<string>Fonts/SpaceMono-BoldItalic.ttf</string>
-		<string>Fonts/SpaceMono-Italic.ttf</string>
-		<string>Fonts/SpaceMono-Regular.ttf</string>
+		<string>Fonts/Soehne-Buch.otf</string>
+		<string>Fonts/Soehne-Halbfett.otf</string>
+		<string>Fonts/Soehne-Fett.otf</string>
 	</array>
 </dict>
 </plist>

@@ -22,17 +22,14 @@ struct MainComponent: View {
     var body: some View {
         Group {
             HStack(alignment: .center) {
-                Spacer()
                 Text(categoryName)
+                    .foregroundColor(.blue)
                 Spacer()
             }
-            .font(.custom("SpaceMono-Bold", size: 17))
-            Divider()
-                .padding(.horizontal)
-                .padding(.top, -10.0)
+            .padding(.leading)
+            .font(.custom("TestSohne-Halbfett", size: 20))
             HStack(alignment: .top) {
-                Spacer()
-                VStack(alignment: .center, spacing: -5.0) {
+                VStack(alignment: .leading, spacing: -5.0) {
                     ForEach(Array(zip(navNameColumnOne, navViewColumnOne)), id: \.0) { navName, navView in
                         NavigationLink(destination: navView()) {
                             Text(navName)
@@ -40,7 +37,7 @@ struct MainComponent: View {
                     }
                 }
                 Spacer()
-                VStack(alignment: .center, spacing: -5.0) {
+                VStack(alignment: .leading, spacing: -5.0) {
                     ForEach(Array(zip(navNameColumnTwo, navViewColumnTwo)), id: \.0) { navName, navView in
                         NavigationLink(destination: navView()) {
                             Text(navName)
@@ -50,11 +47,10 @@ struct MainComponent: View {
                 }
                 Spacer()
             }
-            .padding(.trailing)
-            .padding(.leading, 20.0)
-            .padding(.top, -17.0)
-            .font(.custom("SpaceMono-Bold", size: 28))
-            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+            .padding(.top, -15.0)
+            .padding(.horizontal)
+            .font(.custom("TestSohne-Halbfett", size: 44))
+            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
         }
     }
 }

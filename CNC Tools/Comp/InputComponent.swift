@@ -28,16 +28,17 @@ struct InputComponent: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(name)
-                        .font(.custom("SpaceMono-Regular", size: 20))
+                        .font(.custom("TestSohne-Halbfett", size: 20))
+                        .foregroundColor(.blue)
                     Spacer()
                 }
                 TextField(inputName, value: $inputValue, formatter: twoDigits)
-                    .padding(.top, -22.0)
+                    .padding(.top, -15)
                     .keyboardType(.decimalPad)
                     .onChange(of: inputValue) { newValue in
                         inputValue = newValue
                     }
-                    .font(.custom("SpaceMono-Bold", size: 28))
+                    .font(.custom("TestSohne-Halbfett", size: 44))
             }
         }
     }

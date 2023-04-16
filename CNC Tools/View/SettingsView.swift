@@ -30,16 +30,12 @@ struct SettingsView: View {
                 VStack(alignment: .leading) {
                     // MARK: - UNITS
                     HStack {
-                        Image(systemName: "plusminus")
-                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                        Text("UNITS OF MEASUREMENTS")
+                        Text("Units of measurements")
+                            .foregroundColor(.blue)
                         Spacer()
                     }
                     .padding(.leading)
-                    .font(.custom("SpaceMono-Bold", size: 17))
-                    Divider()
-                        .padding(.horizontal)
-                        .padding(.top, -10.0)
+                    .font(.custom("TestSohne-Halbfett", size: 20))
                     HStack {
                         Button("MM") {
                             chooseMmOrInch = true
@@ -53,38 +49,34 @@ struct SettingsView: View {
                         }
                         .opacity(chooseMmOrInch ? 0.3 : 1.0)
                     }
-                    .padding(.trailing)
-                    .padding(.leading, 20.0)
-                    .padding(.top, -17.0)
-                    .font(.custom("SpaceMono-Bold", size: 28))
+                    .padding(.top, -15.0)
+                    .padding(.horizontal)
+                    .font(.custom("TestSohne-Halbfett", size: 28))
+                    .foregroundColor(.black)
                     
                     // MARK: - STORE MANAGER
                     HStack {
-                        Image(systemName: "bag")
-                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                        Text("REMOVE AD AND BUY NEW FEATURES")
+                        Text("Buy Premium & Remove ADs")
+                            .foregroundColor(.blue)
                         Spacer()
                     }
-                    .padding(.leading)
-                    .padding(.top, 5)
-                    .font(.custom("SpaceMono-Bold", size: 17))
-                    Divider()
-                        .padding(.horizontal)
-                        .padding(.top, -10.0)
+                    .padding([.top, .leading])
+                    .font(.custom("TestSohne-Halbfett", size: 20))
                     HStack {
                         if storeKitManager.premiumUnlocked {
-                            Text("PREMIUM UNLOCKED")
+                            Text("Premium Unlocked")
+                                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                         } else {
-                            Button("ULOCK PREMIUM") {
+                            Button("Unlock Premium") {
                                 storeKitManager.getProducts()
                                 storeKitManager.purchaseProduct()
                             }
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                         }
                     }
-                    .padding(.trailing)
-                    .padding(.leading, 20.0)
-                    .padding(.top, -17.0)
-                    .font(.custom("SpaceMono-Bold", size: 28))
+                    .padding(.top, -15.0)
+                    .padding(.horizontal)
+                    .font(.custom("TestSohne-Halbfett", size: 28))
                     Spacer()
                     if storeKitManager.premiumUnlocked == false {
                         BannerView()
@@ -105,7 +97,7 @@ struct SettingsView: View {
                         Image(systemName: "chevron.left")
                             .font(Font.system(size: 16))
                         Text("Back")
-                            .font(Font.custom("SpaceMono-Regular", size: 17))
+                            .font(Font.custom("TestSohne-Buch", size: 17))
                     }
                 }
             }
