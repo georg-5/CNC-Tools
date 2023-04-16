@@ -1,5 +1,6 @@
 import SwiftUI
 import CoreData
+import StoreKit
 
 // MARK: - DRILLING VIEW
 struct DrillingView: View {
@@ -21,6 +22,7 @@ struct DrillingView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var metricInches: FetchedResults<Tool>
+    @StateObject private var storeKitManager = StoreKitManager()
     @State private var toolDiam = 0.0
     @State private var cuttingSpeed = 0.0
     @State private var spindelSpeed = 0.0
@@ -131,8 +133,10 @@ struct DrillingView: View {
                     .padding(.leading)
                 }
                 .scrollDismissesKeyboard(.immediately)
-                BannerView()
-                    .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
+                if storeKitManager.premiumUnlocked == false {
+                    BannerView()
+                        .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
+                }
             }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
@@ -182,23 +186,25 @@ struct DrillingView: View {
         }
         .toolbar {
             ToolbarItem {
-                if spindelSpeed > 0.0 && feedRate > 0.0 {
-                    HStack {
-                        Button("Save") {
-                            showAlert = true
-                        }
-                        .font(Font.custom("SpaceMono-Regular", size: 17))
-                        .alert("Enter tool name.", isPresented: $showAlert, actions: {
-                            TextField("Tool name", text: $toolName)
-                                .foregroundColor(.black)
-                            Button("Save", action: {
-                                saveTool()
-                                toolName = ""
+                if storeKitManager.premiumUnlocked {
+                    if spindelSpeed > 0.0 && feedRate > 0.0 {
+                        HStack {
+                            Button("Save") {
+                                showAlert = true
+                            }
+                            .font(Font.custom("SpaceMono-Regular", size: 17))
+                            .alert("Enter tool name.", isPresented: $showAlert, actions: {
+                                TextField("Tool name", text: $toolName)
+                                    .foregroundColor(.black)
+                                Button("Save", action: {
+                                    saveTool()
+                                    toolName = ""
+                                })
+                                Button("Cancel", role: .cancel, action: {})
+                            }, message: {
+                                Text("Please enter a name for the tool.")
                             })
-                            Button("Cancel", role: .cancel, action: {})
-                        }, message: {
-                            Text("Please enter a name for the tool.")
-                        })
+                        }
                     }
                 }
             }
@@ -224,6 +230,7 @@ struct DrillingView: View {
             if let metricInchesCored = metricInches.first {
                 metricInchesCheck = metricInchesCored.mmOrInch
             }
+            SKPaymentQueue.default().add(storeKitManager)
         }
         .onTapToDismissKeyboard()
         

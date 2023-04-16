@@ -1,8 +1,10 @@
 import SwiftUI
 import CoreData
+import StoreKit
 
 struct SavedToolsView: View {
-    // MARK: - VARIABLES
+    // MARK: - VARIABLES\
+    @StateObject private var storeKitManager = StoreKitManager()
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode:
     Binding<PresentationMode>
@@ -64,8 +66,10 @@ struct SavedToolsView: View {
                     }
                 }
                 .scrollContentBackground(.hidden)
-                BannerView()
-                    .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
+                if storeKitManager.premiumUnlocked == false {
+                    BannerView()
+                        .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
+                }
             }
         }
         .navigationTitle("SAVED TOOLS")
@@ -89,6 +93,7 @@ struct SavedToolsView: View {
             if let metricInchesCored = toolsMills.first {
                 metricInchesCheck = metricInchesCored.mmOrInch
             }
+            SKPaymentQueue.default().add(storeKitManager)
         }
     }
 }

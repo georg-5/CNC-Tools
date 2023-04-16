@@ -1,9 +1,11 @@
 import SwiftUI
 import CoreData
+import StoreKit
 
 struct SettingsView: View {
     // MARK: - VARIABLES
     @State private var chooseMmOrInch: Bool = true  // true - MM, false - INCH
+    @StateObject private var storeKitManager = StoreKitManager()
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -26,6 +28,7 @@ struct SettingsView: View {
         NavigationView {
             HStack {
                 VStack(alignment: .leading) {
+                    // MARK: - UNITS
                     HStack {
                         Image(systemName: "plusminus")
                             .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
@@ -54,10 +57,39 @@ struct SettingsView: View {
                     .padding(.leading, 20.0)
                     .padding(.top, -17.0)
                     .font(.custom("SpaceMono-Bold", size: 28))
-                    @Environment(\.colorScheme) var colorScheme
+                    
+                    // MARK: - STORE MANAGER
+                    HStack {
+                        Image(systemName: "bag")
+                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        Text("REMOVE AD AND BUY NEW FEATURES")
+                        Spacer()
+                    }
+                    .padding(.leading)
+                    .padding(.top, 5)
+                    .font(.custom("SpaceMono-Bold", size: 17))
+                    Divider()
+                        .padding(.horizontal)
+                        .padding(.top, -10.0)
+                    HStack {
+                        if storeKitManager.premiumUnlocked {
+                            Text("PREMIUM UNLOCKED")
+                        } else {
+                            Button("ULOCK PREMIUM") {
+                                storeKitManager.getProducts()
+                                storeKitManager.purchaseProduct()
+                            }
+                        }
+                    }
+                    .padding(.trailing)
+                    .padding(.leading, 20.0)
+                    .padding(.top, -17.0)
+                    .font(.custom("SpaceMono-Bold", size: 28))
                     Spacer()
-                    BannerView()
-                        .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
+                    if storeKitManager.premiumUnlocked == false {
+                        BannerView()
+                            .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
+                    }
                 }
             }
         }
@@ -82,6 +114,7 @@ struct SettingsView: View {
             if let tool = tools.first {
                 chooseMmOrInch = tool.mmOrInch
             }
+            SKPaymentQueue.default().add(storeKitManager)
         }
     }
 }

@@ -1,5 +1,6 @@
 import SwiftUI
 import CoreData
+import StoreKit
 
 // MARK: - TURNING VIEW
 struct TurningView: View {
@@ -21,6 +22,7 @@ struct TurningView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var metricInches: FetchedResults<Tool>
+    @StateObject private var storeKitManager = StoreKitManager()
     @State private var toolDiam = 0.0
     @State private var cuttingSpeed = 0.0
     @State private var spindelSpeed = 0.0
@@ -131,8 +133,10 @@ struct TurningView: View {
                     .padding(.leading)
                 }
                 .scrollDismissesKeyboard(.immediately)
-                BannerView()
-                    .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
+                if storeKitManager.premiumUnlocked == false {
+                    BannerView()
+                        .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
+                }
             }
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
@@ -182,7 +186,8 @@ struct TurningView: View {
         }
         .toolbar {
             ToolbarItem {
-                if spindelSpeed > 0.0 && feedRate > 0.0 {
+                if storeKitManager.premiumUnlocked {
+                    if spindelSpeed > 0.0 && feedRate > 0.0 {
                     HStack {
                         Button("Save") {
                             showAlert = true
@@ -200,6 +205,7 @@ struct TurningView: View {
                             Text("Please enter a name for the tool.")
                         })
                     }
+                }
                 }
             }
         }
@@ -224,6 +230,7 @@ struct TurningView: View {
             if let metricInchesCored = metricInches.first {
                 metricInchesCheck = metricInchesCored.mmOrInch
             }
+            SKPaymentQueue.default().add(storeKitManager)
         }
         .onTapToDismissKeyboard()
         

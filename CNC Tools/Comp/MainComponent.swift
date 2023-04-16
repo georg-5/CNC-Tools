@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 
 struct MainComponent: View {
     @Environment(\.colorScheme) var colorScheme
@@ -20,19 +21,18 @@ struct MainComponent: View {
     
     var body: some View {
         Group {
-            HStack {
-                Image(systemName: categoryLogo)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+            HStack(alignment: .center) {
+                Spacer()
                 Text(categoryName)
                 Spacer()
             }
-            .padding(.leading)
             .font(.custom("SpaceMono-Bold", size: 17))
             Divider()
                 .padding(.horizontal)
                 .padding(.top, -10.0)
             HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: -5.0) {
+                Spacer()
+                VStack(alignment: .center, spacing: -5.0) {
                     ForEach(Array(zip(navNameColumnOne, navViewColumnOne)), id: \.0) { navName, navView in
                         NavigationLink(destination: navView()) {
                             Text(navName)
@@ -40,7 +40,7 @@ struct MainComponent: View {
                     }
                 }
                 Spacer()
-                VStack(alignment: .leading, spacing: -5.0) {
+                VStack(alignment: .center, spacing: -5.0) {
                     ForEach(Array(zip(navNameColumnTwo, navViewColumnTwo)), id: \.0) { navName, navView in
                         NavigationLink(destination: navView()) {
                             Text(navName)
@@ -53,8 +53,8 @@ struct MainComponent: View {
             .padding(.trailing)
             .padding(.leading, 20.0)
             .padding(.top, -17.0)
-            .font(.custom("SpaceMono-Regular", size: 22))
-            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+            .font(.custom("SpaceMono-Bold", size: 28))
+            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
         }
     }
 }

@@ -67,10 +67,12 @@ struct MainView: View {
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Tool.mmOrInch, ascending: true)],
                   animation: .default)
     private var metricInches: FetchedResults<Tool>
+    @StateObject private var storeKitManager = StoreKitManager()
     @StateObject private var appState = AppState()
     @StateObject private var reviewManager = ReviewManager()
     @State private var showAlert = false
     @State private var showAlertForSavedTool = false
+    @State private var showAlertForPremium = false
     
     // MARK: - FUNCTIONS
     private func checkValuesInCoreData() -> Bool {
@@ -118,62 +120,77 @@ struct MainView: View {
                     )
                     Spacer().frame(height: 30)
                     /*
-                    // 2ND ROW
-                    MainComponent(categoryName: "TRIGONOMETRY",
-                                  categoryLogo: "angle",
-                                  navNameColumnOne: ["RECTANGULAR"],
-                                  navNameColumnTwo: [],
-                                  navViewColumnOne: [{ AnyView(TriangleView()) }],
-                                  navViewColumnTwo: []
-                    )
-                    Spacer().frame(height: 40)
+                     // 2ND ROW
+                     MainComponent(categoryName: "TRIGONOMETRY",
+                     categoryLogo: "angle",
+                     navNameColumnOne: ["RECTANGULAR"],
+                     navNameColumnTwo: [],
+                     navViewColumnOne: [{ AnyView(TriangleView()) }],
+                     navViewColumnTwo: []
+                     )
+                     Spacer().frame(height: 40)
                      */
                     // 3RD ROW
-                    HStack {
-                        Image(systemName: "skew")
-                            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                    HStack(alignment: .center) {
+                        Spacer()
                         Text("CNC")
                         Spacer()
                     }
-                    .padding(.leading)
-                    .padding(.top, -10)
                     .font(.custom("SpaceMono-Bold", size: 17))
+                    .padding(.top, -10)
                     Divider()
                         .padding(.horizontal)
                         .padding(.top, -10.0)
                     HStack(alignment: .top) {
-                        VStack(alignment: .leading, spacing: -5.0) {
-                            if checkValuesInCoreData() {
-                                NavigationLink(destination: SavedToolsView()) {
-                                    Text("TOOLS")
+                        Spacer()
+                        VStack(alignment: .center, spacing: -5.0) {
+                            if storeKitManager.premiumUnlocked {
+                                if checkValuesInCoreData() {
+                                    NavigationLink(destination: SavedToolsView()) {
+                                        Text("SAVED TOOLS")
+                                    }
+                                } else {
+                                    Button(action: {
+                                        showAlertForSavedTool = true
+                                    }, label: {
+                                        Text("SAVED TOOLS")
+                                    })
+                                    .alert(isPresented: $showAlertForSavedTool) {
+                                        Alert(
+                                            title: Text("No saved tools yet!")
+                                        )
+                                    }
                                 }
                             } else {
                                 Button(action: {
-                                    showAlertForSavedTool = true
+                                    showAlertForPremium = true
                                 }, label: {
-                                    Text("TOOLS")
+                                    Text("SAVED TOOLS")
                                 })
-                                .alert(isPresented: $showAlertForSavedTool) {
+                                .alert(isPresented: $showAlertForPremium) {
                                     Alert(
-                                        title: Text("No saved tools yet!")
+                                        title: Text("You need to unlock this feature!")
                                     )
                                 }
                             }
                         }
                         Spacer()
-                        VStack(alignment: .leading, spacing: -5.0) {
-
-                        }
-                        Spacer()
+                        /* VStack(alignment: .center, spacing: -5.0) {
+                         
+                         }
+                         Spacer()
+                         */
                     }
                     .padding(.trailing)
                     .padding(.leading, 20.0)
                     .padding(.top, -17.0)
-                    .font(.custom("SpaceMono-Regular", size: 22))
-                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    .font(.custom("SpaceMono-Bold", size: 28))
+                    .foregroundColor(.blue)
                     Spacer()
-                    BannerView()
-                        .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
+                    if storeKitManager.premiumUnlocked == false {
+                        BannerView()
+                            .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
+                    }
                 }
             }
             .onAppear {
@@ -181,6 +198,7 @@ struct MainView: View {
                 if let metricInchesCored = metricInches.first {
                     appState.metricInchesCheck = metricInchesCored.mmOrInch
                 }
+                SKPaymentQueue.default().add(storeKitManager)
             }
             .navigationTitle("CNC TOOLS")
             .navigationBarTitleDisplayMode(.inline)
