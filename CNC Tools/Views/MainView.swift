@@ -22,6 +22,7 @@ struct MainView: View {
     @State private var showAlert = false
     @State private var showAlertForSavedTool = false
     @State private var showAlertForPremium = false
+    @State var sSizes = 42.0
     
     // MARK: - Functions
     private func checkValuesInCoreData() -> Bool {
@@ -62,34 +63,25 @@ struct MainView: View {
                 VStack {
                     // 1ST ROW
                     MainComponent(categoryName: "Regimes Calculating",
-                                  categoryLogo: "number",
-                                  navNameColumnOne: ["Milling", "Turning"],
-                                  navNameColumnTwo: ["Drilling"],
-                                  navViewColumnOne: [{ AnyView(MillingView()) }, { AnyView(TurningView()) }],
-                                  navViewColumnTwo: [{ AnyView(DrillingView()) }]
+                                  iconNames: ["Milling", "Turning", "Drilling"],
+                                  navNames: ["Milling", "Turning", "Drilling"],
+                                  navViews: [{ AnyView(MillingView()) },
+                                                     { AnyView(TurningView()) },
+                                                     { AnyView(DrillingView()) }]
                     )
-                    Spacer().frame(height: 30)
-                    /*
-                     // 2ND ROW
-                     MainComponent(categoryName: "TRIGONOMETRY",
-                     categoryLogo: "angle",
-                     navNameColumnOne: ["RECTANGULAR"],
-                     navNameColumnTwo: [],
-                     navViewColumnOne: [{ AnyView(TriangleView()) }],
-                     navViewColumnTwo: []
-                     )
-                     Spacer().frame(height: 40)
-                     */
-                    // 3RD ROW
+                    // 2ND ROW
                     HStack(alignment: .center) {
                         Text("Others")
+                            .font(.custom("TestSohne-Halbfett", size: 20))
+                            .foregroundColor(.blue)
                         Spacer()
                     }
                     .padding(.leading)
-                    .font(.custom("TestSohne-Halbfett", size: 20))
-                    .foregroundColor(.blue)
-                    HStack(alignment: .top) {
-                        VStack(alignment: .leading, spacing: -5.0) {
+                    .padding(.top, -15.0)
+                    VStack(alignment: .leading, spacing: 5.0) {
+                        HStack(alignment: .center) {
+                            GradientRectangle(cRadius: 3, recIconName: "Tools")
+                                .frame(width: sSizes + 8.0, height: sSizes + 8.0)
                             if storeKitManager.premiumUnlocked {
                                 if checkValuesInCoreData() {
                                     NavigationLink(destination: SavedToolsView()) {
@@ -119,18 +111,13 @@ struct MainView: View {
                                     )
                                 }
                             }
+                            Spacer()
                         }
-                        Spacer()
-                        /* VStack(alignment: .center, spacing: -5.0) {
-                         
-                         }
-                         Spacer()
-                         */
+                        .font(.custom("TestSohne-Halbfett", size: sSizes))
+                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     }
-                    .padding(.top, -15.0)
-                    .padding(.horizontal)
-                    .font(.custom("TestSohne-Halbfett", size: 44))
-                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    .padding(.leading, 30.0)
+                    .padding(.top, -2.0)
                     Spacer()
                     if storeKitManager.premiumUnlocked == false {
                         BannerView()

@@ -1,6 +1,8 @@
 import SwiftUI
 import CoreData
+import GoogleMobileAds
 import StoreKit
+
 
 struct MillingView: View {
     

@@ -1,6 +1,7 @@
 import SwiftUI
 import CoreData
 import StoreKit
+import GoogleMobileAds
 
 struct DrillingView: View {
     

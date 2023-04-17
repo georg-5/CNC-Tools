@@ -4,53 +4,41 @@ import StoreKit
 struct MainComponent: View {
     @Environment(\.colorScheme) var colorScheme
     var categoryName: String
-    var categoryLogo: String
-    var navNameColumnOne: [String]
-    var navNameColumnTwo: [String]
-    var navViewColumnOne: [() -> AnyView]
-    var navViewColumnTwo: [() -> AnyView]
+    var iconNames: [String]
+    var navNames: [String]
+    var navViews: [() -> AnyView]
+    var stackSize = 42.0
     
-    init(categoryName: String, categoryLogo: String, navNameColumnOne: [String], navNameColumnTwo: [String], navViewColumnOne: [ () -> AnyView], navViewColumnTwo: [ () -> AnyView]) {
+    init(categoryName: String, iconNames: [String], navNames: [String], navViews: [ () -> AnyView]) {
         self.categoryName = categoryName
-        self.categoryLogo = categoryLogo
-        self.navNameColumnOne = navNameColumnOne
-        self.navNameColumnTwo = navNameColumnTwo
-        self.navViewColumnOne = navViewColumnOne
-        self.navViewColumnTwo = navViewColumnTwo
+        self.iconNames = iconNames
+        self.navNames = navNames
+        self.navViews = navViews
     }
     
     var body: some View {
-        Group {
-            HStack(alignment: .center) {
-                Text(categoryName)
-                    .foregroundColor(.blue)
-                Spacer()
-            }
-            .padding(.leading)
-            .font(.custom("TestSohne-Halbfett", size: 20))
-            HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: -5.0) {
-                    ForEach(Array(zip(navNameColumnOne, navViewColumnOne)), id: \.0) { navName, navView in
-                        NavigationLink(destination: navView()) {
-                            Text(navName)
-                        }
-                    }
-                }
-                Spacer()
-                VStack(alignment: .leading, spacing: -5.0) {
-                    ForEach(Array(zip(navNameColumnTwo, navViewColumnTwo)), id: \.0) { navName, navView in
-                        NavigationLink(destination: navView()) {
-                            Text(navName)
-                        }
-                    }
-
-                }
-                Spacer()
-            }
-            .padding(.top, -15.0)
-            .padding(.horizontal)
-            .font(.custom("TestSohne-Halbfett", size: 44))
-            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+        HStack(alignment: .center) {
+            Text(categoryName)
+                .foregroundColor(.blue)
+            Spacer()
         }
+        .padding(.leading)
+        .font(.custom("TestSohne-Halbfett", size: 20))
+        VStack(alignment: .leading, spacing: 5.0) {
+            ForEach(0..<navNames.count, id: \.self) { index in
+                HStack(alignment: .center) {
+                    GradientRectangle(cRadius: 3, recIconName: iconNames[index])
+                            .frame(width: stackSize + 8.0, height: stackSize + 8.0)
+                    NavigationLink(destination: navViews[index]) {
+                        Text(navNames[index])
+                        Spacer()
+                    }
+                    .font(.custom("TestSohne-Halbfett", size: stackSize))
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                }
+            }
+        }
+        .padding(.leading, 30.0)
+        .padding(.top, -1.0)
     }
 }
