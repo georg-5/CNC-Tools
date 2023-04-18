@@ -41,7 +41,6 @@ struct SavedToolsView: View {
                                 deleteItems(offsets: offsets, tools: toolsMills)
                             })
                         }
-                        .font(.custom("SpaceMono-Regular", size: 12))
                     }
                     if !toolsTurns.isEmpty {
                         Section(header: Text("Turning")) {
@@ -52,7 +51,6 @@ struct SavedToolsView: View {
                                 deleteItems(offsets: offsets, tools: toolsTurns)
                             })
                         }
-                        .font(.custom("SpaceMono-Regular", size: 12))
                     }
                     if !toolsDrills.isEmpty {
                         Section(header: Text("Drilling")) {
@@ -63,9 +61,10 @@ struct SavedToolsView: View {
                                 deleteItems(offsets: offsets, tools: toolsDrills)
                             })
                         }
-                        .font(.custom("SpaceMono-Regular", size: 12))
                     }
                 }
+                .font(.custom("TestSohne-Halbfett", size: 12))
+                .foregroundColor(.blue)
                 .scrollContentBackground(.hidden)
                 if storeKitManager.premiumUnlocked == false {
                     BannerView()

@@ -36,14 +36,16 @@ struct SavedComponent: View {
                             .font(Font.system(size: 16))
                     }
                     Text("Ø")
+                        .font(.system(size: 15))
                     Text(twoDigits.string(from: NSNumber(value: toolDiameter)) ?? "")
+                        .padding(.leading, -3.0)
                     Text(toolName)
                     Spacer()
                 }
             }
             .toggleStyle(.button)
             .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-            .font(.custom("SpaceMono-Bold", size: 17))
+            .font(.custom("TestSohne-Halbfett", size: 17))
             .textCase(.uppercase)
             .frame(height: 20)
             if openStack {
@@ -61,8 +63,9 @@ struct SavedComponent: View {
                         Text(twoDigits.string(from: NSNumber(value: feedRate)) ?? "")
                     }
                 }
+                .padding(.top, 5.0)
                 .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                .font(.custom("SpaceMono-Bold", size: 13))
+                .font(.custom("TestSohne-Halbfett", size: 13))
                 .textCase(.uppercase)
             }
         }

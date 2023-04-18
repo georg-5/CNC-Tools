@@ -8,7 +8,7 @@ final class AdBanner: NSObject, GADBannerViewDelegate, ObservableObject {
     override init() {
         super.init()
         bannerView.delegate = self
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.adUnitID = "ca-app-pub-8585998322708635/9176701538"
         bannerView.rootViewController = UIApplication.shared.windows.first?.rootViewController
 
         let request = GADRequest()

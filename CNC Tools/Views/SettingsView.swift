@@ -51,10 +51,10 @@ struct SettingsView: View {
                         }
                         .opacity(chooseMmOrInch ? 0.3 : 1.0)
                     }
-                    .padding(.top, -15.0)
-                    .padding(.horizontal)
+                    .padding(.leading, 30.0)
+                    .padding(.top, -1.0)
                     .font(.custom("TestSohne-Halbfett", size: 28))
-                    .foregroundColor(.black)
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     
                     // MARK: - Premium
                     HStack {
@@ -76,8 +76,8 @@ struct SettingsView: View {
                             .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                         }
                     }
-                    .padding(.top, -15.0)
-                    .padding(.horizontal)
+                    .padding(.top, -1)
+                    .padding(.leading, 30.0)
                     .font(.custom("TestSohne-Halbfett", size: 28))
                     Spacer()
                     if storeKitManager.premiumUnlocked == false {
