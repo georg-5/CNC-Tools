@@ -70,6 +70,14 @@ struct MainView: View {
                                                      { AnyView(DrillingView()) }]
                     )
                     // 2ND ROW
+                    MainComponent(categoryName: "Information",
+                                  iconNames: ["", ""],
+                                  navNames: ["Threads", "Tolerances"],
+                                  navViews: [{ AnyView(MillingView()) },
+                                                     { AnyView(TurningView()) },
+                                                     { AnyView(DrillingView()) }]
+                    )
+                    // 3RD ROW
                     HStack(alignment: .center) {
                         Text("Others")
                             .font(.custom("TestSohne-Halbfett", size: 20))
