@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5628BF5C29DDEBE60041DDB7 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5628BF5B29DDEBE60041DDB7 /* TriangleView.swift */; };
 		563966FD29EB34A900954605 /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563966FC29EB34A900954605 /* StoreKitManager.swift */; };
 		563966FF29EC04D500954605 /* CNC Tools.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 563966FE29EB421700954605 /* CNC Tools.storekit */; };
 		569F1BE129EC69C7009C93E2 /* ReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F1BE029EC69C7009C93E2 /* ReviewManager.swift */; };
@@ -60,7 +59,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5628BF5B29DDEBE60041DDB7 /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 		563966FC29EB34A900954605 /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
 		563966FE29EB421700954605 /* CNC Tools.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CNC Tools.storekit"; sourceTree = "<group>"; };
 		565D2EAE29E9E11E00FA3F95 /* CNC Tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CNC Tools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,7 +172,6 @@
 				56EEB9A829C7AB5F009894D1 /* MainView.swift */,
 				56D0B6E129F087590070B611 /* ToleranceView.swift */,
 				56D0B6DF29F087480070B611 /* ThreadView.swift */,
-				5628BF5B29DDEBE60041DDB7 /* TriangleView.swift */,
 				56B38CD029D8BDB40091F421 /* BannerView.swift */,
 				56EEB9AF29C7ACEA009894D1 /* MillingView.swift */,
 				56CF5BAD29D76C5800A1A355 /* TurningView.swift */,
@@ -337,7 +334,6 @@
 				56EEB9A229C7AB50009894D1 /* CNC_Tools.xcdatamodeld in Sources */,
 				56B4CAB029E1EB9200992CC2 /* MainComp.swift in Sources */,
 				56EEB9A929C7AB5F009894D1 /* MainView.swift in Sources */,
-				5628BF5C29DDEBE60041DDB7 /* TriangleView.swift in Sources */,
 				569F1BE629EDA3D0009C93E2 /* GradientRectangle.swift in Sources */,
 				56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */,
 				56EEB9B029C7ACEA009894D1 /* MillingView.swift in Sources */,

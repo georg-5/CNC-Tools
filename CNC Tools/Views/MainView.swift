@@ -72,10 +72,9 @@ struct MainView: View {
                     // 2ND ROW
                     MainComponent(categoryName: "Information",
                                   iconNames: ["", ""],
-                                  navNames: ["Threads", "Tolerances"],
-                                  navViews: [{ AnyView(MillingView()) },
-                                                     { AnyView(TurningView()) },
-                                                     { AnyView(DrillingView()) }]
+                                  navNames: ["Tapping", "Tolerances"],
+                                  navViews: [{ AnyView(ThreadView()) },
+                                                     { AnyView(ToleranceView()) }]
                     )
                     // 3RD ROW
                     HStack(alignment: .center) {
