@@ -85,9 +85,10 @@ struct SettingsView: View {
                             .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
                     }
                 }
+                .padding(.leading, 30.0)
             }
         }
-        .navigationTitle("SETTINGS")
+        .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -97,9 +98,7 @@ struct SettingsView: View {
                 }) {
                     HStack(alignment: .center) {
                         Image(systemName: "chevron.left")
-                            .font(Font.system(size: 16))
                         Text("Back")
-                            .font(Font.custom("TestSohne-Buch", size: 17))
                     }
                 }
             }

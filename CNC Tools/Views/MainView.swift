@@ -4,11 +4,6 @@ import GoogleMobileAds
 import StoreKit
 
 struct MainView: View {
-    // MARK: - Initilization
-    init() {
-        UINavigationBar.appearance().titleTextAttributes = [
-            .font : UIFont(name: "TestSohne-Halbfett", size: 17)!]
-        }
     
     // MARK: - Variables
     @Environment(\.managedObjectContext) private var viewContext
@@ -144,16 +139,13 @@ struct MainView: View {
                     storeKitManager.purchaseProduct()
                 }
             }
-            .navigationTitle("CNC TOOLS")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("CNC Tools")
+            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem {
                     HStack(alignment: .center) {
                         NavigationLink(destination: SettingsView()) {
                             Image(systemName: "gearshape")
-                                .resizable()
-                                .frame(width: 17, height: 17)
-                                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                         }
                     }
                 }

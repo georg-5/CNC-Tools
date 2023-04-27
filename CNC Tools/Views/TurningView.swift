@@ -127,7 +127,7 @@ struct TurningView: View {
                         InputComponent(name: "Feed rate", inputName: "vf", inputValue: fRate)
                             .focused($focusedField, equals: .feedRateField)
                     }
-                    .padding(.leading)
+                    .padding(.leading, 30.0)
                 }
                 .scrollDismissesKeyboard(.immediately)
                 if storeKitManager.premiumUnlocked == false {
@@ -179,7 +179,7 @@ struct TurningView: View {
                     }
                 }
             }
-            .padding(.top, 10.0)
+            .padding(.top, 5)
         }
         .toolbar {
             ToolbarItem {
@@ -189,7 +189,6 @@ struct TurningView: View {
                         Button("Save") {
                             showAlert = true
                         }
-                        .font(Font.custom("TestSohne-Buch", size: 17))
                         .alert("Enter tool name.", isPresented: $showAlert, actions: {
                             TextField("Tool name", text: $toolName)
                                 .foregroundColor(.black)
@@ -206,7 +205,7 @@ struct TurningView: View {
                 }
             }
         }
-        .navigationTitle("TURNING")
+        .navigationTitle("Turning")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -216,9 +215,7 @@ struct TurningView: View {
                 }) {
                     HStack(alignment: .center) {
                         Image(systemName: "chevron.left")
-                            .font(Font.system(size: 16))
                         Text("Back")
-                            .font(Font.custom("TestSohne-Buch", size: 17))
                     }
                 }
             }

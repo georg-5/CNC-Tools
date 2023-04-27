@@ -22,9 +22,9 @@
 		56CF5BAC29D4D45700A1A355 /* SavedComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BAB29D4D45700A1A355 /* SavedComp.swift */; };
 		56CF5BAE29D76C5800A1A355 /* TurningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BAD29D76C5800A1A355 /* TurningView.swift */; };
 		56CF5BB029D76FA200A1A355 /* DrillingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CF5BAF29D76FA200A1A355 /* DrillingView.swift */; };
-		56D0B6E029F087480070B611 /* ThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0B6DF29F087480070B611 /* ThreadView.swift */; };
 		56D0B6E229F087590070B611 /* ToleranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0B6E129F087590070B611 /* ToleranceView.swift */; };
 		56E748D629EAADB90016A464 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 56E748D529EAADB90016A464 /* GoogleMobileAds */; };
+		56E7888729FB33A7009F4554 /* ThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E7888629FB33A7009F4554 /* ThreadView.swift */; };
 		56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */; };
 		56EEB99A29C7AB50009894D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EEB99929C7AB50009894D1 /* Assets.xcassets */; };
 		56EEB99F29C7AB50009894D1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB99E29C7AB50009894D1 /* Persistence.swift */; };
@@ -77,8 +77,8 @@
 		56CF5BAD29D76C5800A1A355 /* TurningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurningView.swift; sourceTree = "<group>"; };
 		56CF5BAF29D76FA200A1A355 /* DrillingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrillingView.swift; sourceTree = "<group>"; };
 		56D0B6DE29F084D20070B611 /* CNC ToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CNC ToolsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		56D0B6DF29F087480070B611 /* ThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadView.swift; sourceTree = "<group>"; };
 		56D0B6E129F087590070B611 /* ToleranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToleranceView.swift; sourceTree = "<group>"; };
+		56E7888629FB33A7009F4554 /* ThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadView.swift; sourceTree = "<group>"; };
 		56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNC_ToolsApp.swift; sourceTree = "<group>"; };
 		56EEB99929C7AB50009894D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56EEB99E29C7AB50009894D1 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -128,7 +128,6 @@
 		569F1BDC29EC66B0009C93E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				56EEB9A029C7AB50009894D1 /* CNC_Tools.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,7 +170,7 @@
 				569F1BE429EC6A72009C93E2 /* Components */,
 				56EEB9A829C7AB5F009894D1 /* MainView.swift */,
 				56D0B6E129F087590070B611 /* ToleranceView.swift */,
-				56D0B6DF29F087480070B611 /* ThreadView.swift */,
+				56E7888629FB33A7009F4554 /* ThreadView.swift */,
 				56B38CD029D8BDB40091F421 /* BannerView.swift */,
 				56EEB9AF29C7ACEA009894D1 /* MillingView.swift */,
 				56CF5BAD29D76C5800A1A355 /* TurningView.swift */,
@@ -200,6 +199,7 @@
 				569F1BDF29EC6714009C93E2 /* Utilities */,
 				563966FB29EB33C700954605 /* Preview Content */,
 				56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */,
+				56EEB9A029C7AB50009894D1 /* CNC_Tools.xcdatamodeld */,
 				5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */,
 				56EEB99929C7AB50009894D1 /* Assets.xcassets */,
 			);
@@ -326,7 +326,6 @@
 				569F1BE329EC6A26009C93E2 /* AppState.swift in Sources */,
 				56EEB9B229C7B2D8009894D1 /* InputComp.swift in Sources */,
 				56CF5BA829D4B39600A1A355 /* SavedToolsView.swift in Sources */,
-				56D0B6E029F087480070B611 /* ThreadView.swift in Sources */,
 				56CF5BAC29D4D45700A1A355 /* SavedComp.swift in Sources */,
 				569F1BE829EDD43C009C93E2 /* BannerViewController.swift in Sources */,
 				56CF5BA229D21C6E00A1A355 /* SettingsView.swift in Sources */,
@@ -334,6 +333,7 @@
 				56EEB9A229C7AB50009894D1 /* CNC_Tools.xcdatamodeld in Sources */,
 				56B4CAB029E1EB9200992CC2 /* MainComp.swift in Sources */,
 				56EEB9A929C7AB5F009894D1 /* MainView.swift in Sources */,
+				56E7888729FB33A7009F4554 /* ThreadView.swift in Sources */,
 				569F1BE629EDA3D0009C93E2 /* GradientRectangle.swift in Sources */,
 				56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */,
 				56EEB9B029C7ACEA009894D1 /* MillingView.swift in Sources */,

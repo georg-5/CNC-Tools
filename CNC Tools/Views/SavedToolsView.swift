@@ -72,7 +72,7 @@ struct SavedToolsView: View {
                 }
             }
         }
-        .navigationTitle("SAVED TOOLS")
+        .navigationTitle("Saved Tools")
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -82,9 +82,7 @@ struct SavedToolsView: View {
                 }) {
                     HStack(alignment: .center) {
                         Image(systemName: "chevron.left")
-                            .font(Font.system(size: 16))
                         Text("Back")
-                            .font(Font.custom("TestSohne-Buch", size: 17))
                     }
                 }
             }
