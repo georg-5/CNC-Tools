@@ -23,7 +23,7 @@ struct MainComponent: View {
             Spacer()
         }
         .padding(.leading)
-        .font(.custom("TestSohne-Halbfett", size: 20))
+        .font(.system(size: 20, weight: .bold))
         VStack(alignment: .leading, spacing: 5.0) {
             ForEach(0..<navNames.count, id: \.self) { index in
                 HStack(alignment: .center) {
@@ -33,7 +33,7 @@ struct MainComponent: View {
                         Text(navNames[index])
                         Spacer()
                     }
-                    .font(.custom("TestSohne-Halbfett", size: stackSize))
+                    .font(.system(size: stackSize, weight: .bold))
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 }
             }

@@ -65,16 +65,16 @@ struct MainView: View {
                                                      { AnyView(DrillingView()) }]
                     )
                     // 2ND ROW
-                    MainComponent(categoryName: "Information",
+                    MainComponent(categoryName: "Geometry",
                                   iconNames: ["", ""],
-                                  navNames: ["Tapping", "Tolerances"],
-                                  navViews: [{ AnyView(ThreadView()) },
+                                  navNames: ["Triangle", "Сircle"],
+                                  navViews: [{ AnyView(TrigView()) },
                                                      { AnyView(ToleranceView()) }]
                     )
                     // 3RD ROW
                     HStack(alignment: .center) {
                         Text("Others")
-                            .font(.custom("TestSohne-Halbfett", size: 20))
+                            .font(.system(size: 20, weight: .bold))
                             .foregroundColor(.blue)
                         Spacer()
                     }
@@ -115,7 +115,7 @@ struct MainView: View {
                             }
                             Spacer()
                         }
-                        .font(.custom("TestSohne-Halbfett", size: sSizes))
+                        .font(.system(size: sSizes, weight: .bold))
                         .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     }
                     .padding(.leading, 30.0)

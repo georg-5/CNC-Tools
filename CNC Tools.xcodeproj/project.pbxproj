@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5621B3A52A07C69900FA02D1 /* TrigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B3A42A07C69900FA02D1 /* TrigView.swift */; };
+		5621B3A72A07C74E00FA02D1 /* TrigInputComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B3A62A07C74E00FA02D1 /* TrigInputComp.swift */; };
 		563966FD29EB34A900954605 /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563966FC29EB34A900954605 /* StoreKitManager.swift */; };
 		563966FF29EC04D500954605 /* CNC Tools.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 563966FE29EB421700954605 /* CNC Tools.storekit */; };
 		569F1BE129EC69C7009C93E2 /* ReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F1BE029EC69C7009C93E2 /* ReviewManager.swift */; };
@@ -25,6 +27,7 @@
 		56D0B6E229F087590070B611 /* ToleranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D0B6E129F087590070B611 /* ToleranceView.swift */; };
 		56E748D629EAADB90016A464 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 56E748D529EAADB90016A464 /* GoogleMobileAds */; };
 		56E7888729FB33A7009F4554 /* ThreadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E7888629FB33A7009F4554 /* ThreadView.swift */; };
+		56E788892A005849009F4554 /* MetricThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E788882A005849009F4554 /* MetricThread.swift */; };
 		56EEB99629C7AB4F009894D1 /* CNC_ToolsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */; };
 		56EEB99A29C7AB50009894D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EEB99929C7AB50009894D1 /* Assets.xcassets */; };
 		56EEB99F29C7AB50009894D1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEB99E29C7AB50009894D1 /* Persistence.swift */; };
@@ -59,6 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5621B3A42A07C69900FA02D1 /* TrigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrigView.swift; sourceTree = "<group>"; };
+		5621B3A62A07C74E00FA02D1 /* TrigInputComp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrigInputComp.swift; sourceTree = "<group>"; };
 		563966FC29EB34A900954605 /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
 		563966FE29EB421700954605 /* CNC Tools.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CNC Tools.storekit"; sourceTree = "<group>"; };
 		565D2EAE29E9E11E00FA3F95 /* CNC Tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CNC Tools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +84,7 @@
 		56D0B6DE29F084D20070B611 /* CNC ToolsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CNC ToolsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56D0B6E129F087590070B611 /* ToleranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToleranceView.swift; sourceTree = "<group>"; };
 		56E7888629FB33A7009F4554 /* ThreadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadView.swift; sourceTree = "<group>"; };
+		56E788882A005849009F4554 /* MetricThread.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricThread.swift; sourceTree = "<group>"; };
 		56EEB99529C7AB4F009894D1 /* CNC_ToolsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNC_ToolsApp.swift; sourceTree = "<group>"; };
 		56EEB99929C7AB50009894D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56EEB99E29C7AB50009894D1 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -128,6 +134,7 @@
 		569F1BDC29EC66B0009C93E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				56E788882A005849009F4554 /* MetricThread.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				56EEB9B129C7B2D8009894D1 /* InputComp.swift */,
+				5621B3A62A07C74E00FA02D1 /* TrigInputComp.swift */,
 				56B4CAAF29E1EB9200992CC2 /* MainComp.swift */,
 				56CF5BAB29D4D45700A1A355 /* SavedComp.swift */,
 				569F1BE529EDA3D0009C93E2 /* GradientRectangle.swift */,
@@ -171,6 +179,7 @@
 				56EEB9A829C7AB5F009894D1 /* MainView.swift */,
 				56D0B6E129F087590070B611 /* ToleranceView.swift */,
 				56E7888629FB33A7009F4554 /* ThreadView.swift */,
+				5621B3A42A07C69900FA02D1 /* TrigView.swift */,
 				56B38CD029D8BDB40091F421 /* BannerView.swift */,
 				56EEB9AF29C7ACEA009894D1 /* MillingView.swift */,
 				56CF5BAD29D76C5800A1A355 /* TurningView.swift */,
@@ -323,6 +332,7 @@
 			files = (
 				56EEB99F29C7AB50009894D1 /* Persistence.swift in Sources */,
 				56CF5BB029D76FA200A1A355 /* DrillingView.swift in Sources */,
+				5621B3A52A07C69900FA02D1 /* TrigView.swift in Sources */,
 				569F1BE329EC6A26009C93E2 /* AppState.swift in Sources */,
 				56EEB9B229C7B2D8009894D1 /* InputComp.swift in Sources */,
 				56CF5BA829D4B39600A1A355 /* SavedToolsView.swift in Sources */,
@@ -331,6 +341,7 @@
 				56CF5BA229D21C6E00A1A355 /* SettingsView.swift in Sources */,
 				56CF5B9E29D1A93200A1A355 /* Extensions.swift in Sources */,
 				56EEB9A229C7AB50009894D1 /* CNC_Tools.xcdatamodeld in Sources */,
+				5621B3A72A07C74E00FA02D1 /* TrigInputComp.swift in Sources */,
 				56B4CAB029E1EB9200992CC2 /* MainComp.swift in Sources */,
 				56EEB9A929C7AB5F009894D1 /* MainView.swift in Sources */,
 				56E7888729FB33A7009F4554 /* ThreadView.swift in Sources */,
@@ -339,6 +350,7 @@
 				56EEB9B029C7ACEA009894D1 /* MillingView.swift in Sources */,
 				56B38CD129D8BDB40091F421 /* BannerView.swift in Sources */,
 				569F1BE129EC69C7009C93E2 /* ReviewManager.swift in Sources */,
+				56E788892A005849009F4554 /* MetricThread.swift in Sources */,
 				56D0B6E229F087590070B611 /* ToleranceView.swift in Sources */,
 				563966FD29EB34A900954605 /* StoreKitManager.swift in Sources */,
 				569F1BEE29EDE16C009C93E2 /* AdBanner.swift in Sources */,

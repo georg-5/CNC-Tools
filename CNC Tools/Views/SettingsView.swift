@@ -36,8 +36,7 @@ struct SettingsView: View {
                             .foregroundColor(.blue)
                         Spacer()
                     }
-                    .padding(.leading)
-                    .font(.custom("TestSohne-Halbfett", size: 20))
+                    .font(.system(size: 20, weight: .bold))
                     HStack {
                         Button("MM") {
                             chooseMmOrInch = true
@@ -51,9 +50,9 @@ struct SettingsView: View {
                         }
                         .opacity(chooseMmOrInch ? 0.3 : 1.0)
                     }
-                    .padding(.leading, 30.0)
+                    .padding(.leading)
                     .padding(.top, -1.0)
-                    .font(.custom("TestSohne-Halbfett", size: 28))
+                    .font(.system(size: 28, weight: .bold))
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     
                     // MARK: - Premium
@@ -62,8 +61,8 @@ struct SettingsView: View {
                             .foregroundColor(.blue)
                         Spacer()
                     }
-                    .padding([.top, .leading])
-                    .font(.custom("TestSohne-Halbfett", size: 20))
+                    .padding(.top)
+                    .font(.system(size: 20, weight: .bold))
                     HStack {
                         if storeKitManager.premiumUnlocked {
                             Text("Premium Unlocked")
@@ -77,8 +76,8 @@ struct SettingsView: View {
                         }
                     }
                     .padding(.top, -1)
-                    .padding(.leading, 30.0)
-                    .font(.custom("TestSohne-Halbfett", size: 28))
+                    .padding(.leading)
+                    .font(.system(size: 28, weight: .bold))
                     Spacer()
                     if storeKitManager.premiumUnlocked == false {
                         BannerView()

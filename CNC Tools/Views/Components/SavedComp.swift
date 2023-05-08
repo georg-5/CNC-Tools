@@ -45,7 +45,7 @@ struct SavedComponent: View {
             }
             .toggleStyle(.button)
             .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-            .font(.custom("TestSohne-Halbfett", size: 17))
+            .font(.system(size: 17, weight: .bold))
             .textCase(.uppercase)
             .frame(height: 20)
             if openStack {
@@ -65,7 +65,7 @@ struct SavedComponent: View {
                 }
                 .padding(.top, 5.0)
                 .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                .font(.custom("TestSohne-Halbfett", size: 13))
+                .font(.system(size: 13, weight: .bold))
                 .textCase(.uppercase)
             }
         }
