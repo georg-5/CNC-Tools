@@ -16,15 +16,20 @@ struct TrigView: View {
     @State private var cSide = 0.0
     
     @State private var aDeg = 0.0
-    @State private var bDeg = 0.0
+    @State private var bDeg = 90.0
     @State private var cDeg = 0.0
     
     func nonNumberShield() {
         if cSide < aSide {
             bSide = 0.0
             aDeg = 0.0
-            bDeg = 0.0
+            bDeg = 90.0
             cDeg = 0.0
+        }
+        else if aDeg > 90.0 || cDeg > 90.0 {
+            aDeg = 45.0
+            bDeg = 90.0
+            cDeg = 45.0
         }
     }
     
@@ -33,6 +38,12 @@ struct TrigView: View {
         cSide = pow(aSide, 2) + pow(bSide, 2)
         cSide = sqrt(cSide)
     }
+    func bSideFunc() {
+        nonNumberShield()
+        bSide = pow(cSide, 2) - pow(aSide, 2)
+        bSide = sqrt(bSide)
+    }
+    
     func aDegFuncForASide() {
         nonNumberShield()
         aDeg = aSide / cSide
@@ -41,19 +52,39 @@ struct TrigView: View {
     }
     func aDegFuncForBSide() {
         nonNumberShield()
-        aDeg = bSide / cSide
-        aDeg = asin(aDeg)
-        aDeg = aDeg * 180.0 / Double.pi
+        bDeg = bSide / cSide
+        bDeg = asin(aDeg)
+        bDeg = aDeg * 180.0 / Double.pi
     }
+    
+    
     func cDegFunc() {
         nonNumberShield()
         cDeg = 180.0 - bDeg - aDeg
     }
-    func bSideFunc() {
+    func aDegFunc() {
         nonNumberShield()
-        bSide = pow(cSide, 2) - pow(aSide, 2)
-        bSide = sqrt(bSide)
+        aDeg = 180.0 - bDeg - cDeg
     }
+    
+    func aSideFunc() {
+        nonNumberShield()
+        aDeg = aDeg * Double.pi / 180.0
+        aSide = cSide * cos(aDeg)
+    }
+    func cSideDegFuncA() {
+        nonNumberShield()
+        let aDegTemp = aDeg
+        let aRad = aDegTemp * Double.pi / 180.0
+        cSide = aSide / sin(aRad)
+    }
+    func cSideDegFuncC() {
+        nonNumberShield()
+        let cDegTemp = cDeg
+        let cRad = cDegTemp * Double.pi / 180.0
+        cSide = bSide / sin(cRad)
+    }
+    
     
     var body: some View {
         let sideA = Binding (
@@ -93,7 +124,8 @@ struct TrigView: View {
             get: { aDeg },
             set: { aDeg = $0
                 if $0 > 0.0 {
-                   
+                    cDegFunc()
+                    cSideDegFuncA()
                 }
             }
         )
@@ -101,7 +133,8 @@ struct TrigView: View {
             get: { bDeg },
             set: { bDeg = $0
                 if $0 > 0.0 {
-                   
+                    bDeg = 90.0
+                    
                 }
             }
         )
@@ -109,48 +142,75 @@ struct TrigView: View {
             get: { cDeg },
             set: { cDeg = $0
                 if $0 > 0.0 {
-                   
+                    aDegFunc()
+                    cSideDegFuncC()
                 }
             }
         )
         
         NavigationView {
             VStack {
-                ScrollView (.vertical) {
-                    VStack {
-                        HStack {
-                            Text("Sides")
-                                .font(.system(size: 28, weight: .bold))
-                                .foregroundColor(.blue)
-                                .padding(.leading, 30.0)
-                            Spacer()
-                        }
-                        .padding(.bottom, 7.0)
-                        HStack {
-                            TrigInputComponent(name: "A", inputName: "A", inputValue: sideA)
-                            TrigInputComponent(name: "B", inputName: "B", inputValue: sideB)
-                            TrigInputComponent(name: "C", inputName: "C", inputValue: sideC)
-                        }
-                        HStack {
-                            Text("Angles")
-                                .font(.system(size: 28, weight: .bold))
-                                .foregroundColor(.blue)
-                                .padding(.leading, 30.0)
-                            Spacer()
-                        }
-                        .padding(.bottom, 7.0)
-                        .padding(.top)
-                        HStack {
-                            TrigInputComponent(name: "Alpha", inputName: "α", inputValue: degA)
-                            TrigInputComponent(name: "Beta", inputName: "β", inputValue: degB)
-                            TrigInputComponent(name: "Gamma", inputName: "γ", inputValue: degC)
-                        }
+                VStack {
+                    HStack {
+                        Text("Sides")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(.blue)
+                            .padding(.leading, 30.0)
+                        Spacer()
+                    }
+                    .padding(.bottom, 1.0)
+                    HStack {
+                        Spacer()
+                        TrigInputComponent(name: "Base", inputName: "A", inputValue: sideA)
+                        TrigInputComponent(name: "Height", inputName: "B", inputValue: sideB)
+                        TrigInputComponent(name: "Hypotenuse", inputName: "C", inputValue: sideC)
+                        Spacer()
+                    }
+                    HStack {
+                        Text("Angles")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(.blue)
+                            .padding(.leading, 30.0)
+                        Spacer()
+                    }
+                    .padding(.bottom, 1.0)
+                    .padding(.top)
+                    HStack {
+                        Spacer()
+                        TrigInputComponent(name: "Alpha", inputName: "α", inputValue: degA)
+                        TrigInputComponent(name: "Beta", inputName: "β", inputValue: degB)
+                        TrigInputComponent(name: "Gamma", inputName: "γ", inputValue: degC)
+                        Spacer()
+                    }
+                    Spacer()
+                    ZStack {
                         VStack(alignment: .center) {
-                            Triangle(a: aSide, b: bSide, c: cSide)
+                            Text("Base (A)")
+                                .offset(x: 0, y: 130)
+                            Text("Height (B)")
+                                .offset(x: -35, y: 145)
+                                .rotationEffect(.degrees(90.0))
+                            Text("Hypotenuse (C)"   )
+                                .offset(x: -35, y: -60)
+                                .rotationEffect(.degrees(45.0))
+                        }
+                        VStack {
+                            HStack {
+                                Spacer()
+                                Path { path in
+                                    path.move(to: CGPoint(x: 0, y: 0))
+                                    path.addLine(to: CGPoint(x: 0, y: 250))
+                                    path.addLine(to: CGPoint(x: 250, y: 250))
+                                    path.closeSubpath()
+                                }
                                 .stroke(Color.black, lineWidth: 2)
+                                .frame(width: 250, height: 250, alignment: .center)
                                 .padding()
-                                .frame(width: aSide, height: bSide, alignment: .center)
-                                .padding(.top, bSide)
+                                Spacer()
+                            }
+                            Text("α").offset(x: 65, y: -60 )
+                            Text("β").offset(x: -100, y: -80)
+                            Text("γ").offset(x: -105, y: -280)
                         }
                     }
                 }
@@ -189,27 +249,6 @@ struct TrigView: View {
             }
         }
         .onTapToDismissKeyboard()
-    }
-}
-
-struct Triangle: Shape {
-    let a: CGFloat
-    let b: CGFloat
-    let c: CGFloat
-    
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        let p1 = CGPoint(x: 0, y: 0)
-        let p2 = CGPoint(x: a, y: 0)
-        let p3 = CGPoint(x: 0, y: -b)
-        
-        path.move(to: p1)
-        path.addLine(to: p3)
-        path.addLine(to: p2)
-        path.closeSubpath()
-        
-        return path
     }
 }
 
