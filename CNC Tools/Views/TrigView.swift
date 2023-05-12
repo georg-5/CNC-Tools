@@ -16,73 +16,57 @@ struct TrigView: View {
     @State private var cSide = 0.0
     
     @State private var aDeg = 0.0
-    @State private var bDeg = 90.0
+    @State private var bDeg = 0.0
     @State private var cDeg = 0.0
     
     func nonNumberShield() {
         if cSide < aSide {
             bSide = 0.0
             aDeg = 0.0
-            bDeg = 90.0
+            bDeg = 0.0
             cDeg = 0.0
-        }
-        else if aDeg > 90.0 || cDeg > 90.0 {
+        } else if aDeg > 90.0 || cDeg > 90.0 {
             aDeg = 45.0
             bDeg = 90.0
             cDeg = 45.0
         }
     }
     
-    func cSideFunc() {
-        nonNumberShield()
-        cSide = pow(aSide, 2) + pow(bSide, 2)
-        cSide = sqrt(cSide)
-    }
-    func bSideFunc() {
-        nonNumberShield()
-        bSide = pow(cSide, 2) - pow(aSide, 2)
-        bSide = sqrt(bSide)
-    }
-    
-    func aDegFuncForASide() {
+    // A Degrees formula
+    func funcADeg() {
         nonNumberShield()
         aDeg = aSide / cSide
         aDeg = asin(aDeg)
         aDeg = aDeg * 180.0 / Double.pi
     }
-    func aDegFuncForBSide() {
-        nonNumberShield()
-        bDeg = bSide / cSide
-        bDeg = asin(aDeg)
-        bDeg = aDeg * 180.0 / Double.pi
+    func funcADegReturn() {
+        let aRad = aDeg * Double.pi / 180.0
+        cSide = aSide / sin(aRad)
     }
-    
-    
-    func cDegFunc() {
+    // C Degrees formula
+    func funcCDeg() {
         nonNumberShield()
         cDeg = 180.0 - bDeg - aDeg
     }
-    func aDegFunc() {
-        nonNumberShield()
-        aDeg = 180.0 - bDeg - cDeg
-    }
     
-    func aSideFunc() {
+    
+    // A Side formula
+    func funcASide() {
         nonNumberShield()
-        aDeg = aDeg * Double.pi / 180.0
-        aSide = cSide * cos(aDeg)
+        aSide = pow(cSide, 2) - pow(bSide, 2)
+        aSide = sqrt(aSide)
     }
-    func cSideDegFuncA() {
+    // B Side formula
+    func funcBSide() {
         nonNumberShield()
-        let aDegTemp = aDeg
-        let aRad = aDegTemp * Double.pi / 180.0
-        cSide = aSide / sin(aRad)
+        bSide = pow(cSide, 2) - pow(aSide, 2)
+        bSide = sqrt(bSide)
     }
-    func cSideDegFuncC() {
+    // C Side formula
+    func funcCSide() {
         nonNumberShield()
-        let cDegTemp = cDeg
-        let cRad = cDegTemp * Double.pi / 180.0
-        cSide = bSide / sin(cRad)
+        cSide = pow(aSide, 2) + pow(bSide, 2)
+        cSide = sqrt(cSide)
     }
     
     
@@ -91,10 +75,12 @@ struct TrigView: View {
             get: { aSide },
             set: { aSide = $0
                 if $0 > 0.0 {
-                    cSideFunc()
-                    aDegFuncForASide()
                     bDeg = 90.0
-                    cDegFunc()
+                    funcCSide()
+                    funcBSide()
+                    funcASide()
+                    funcADeg()
+                    funcCDeg()
                 }
             }
         )
@@ -102,10 +88,12 @@ struct TrigView: View {
             get: { bSide },
             set: { bSide = $0
                 if $0 > 0.0 {
-                    cSideFunc()
-                    aDegFuncForBSide()
                     bDeg = 90.0
-                    cDegFunc()
+                    funcCSide()
+                    funcASide()
+                    funcBSide()
+                    funcADeg()
+                    funcCDeg()
                 }
             }
         )
@@ -113,10 +101,12 @@ struct TrigView: View {
             get: { cSide },
             set: { cSide = $0
                 if $0 > 0.0 {
-                    bSideFunc()
-                    aDegFuncForASide()
                     bDeg = 90.0
-                    cDegFunc()
+                    funcBSide()
+                    funcCSide()
+                    funcASide()
+                    funcADeg()
+                    funcCDeg()
                 }
             }
         )
@@ -124,8 +114,12 @@ struct TrigView: View {
             get: { aDeg },
             set: { aDeg = $0
                 if $0 > 0.0 {
-                    cDegFunc()
-                    cSideDegFuncA()
+                    bDeg = 90.0
+                    funcCDeg()
+                    funcADegReturn()
+                    funcBSide()
+                    funcASide()
+                    funcCSide()
                 }
             }
         )
@@ -134,7 +128,6 @@ struct TrigView: View {
             set: { bDeg = $0
                 if $0 > 0.0 {
                     bDeg = 90.0
-                    
                 }
             }
         )
@@ -142,8 +135,12 @@ struct TrigView: View {
             get: { cDeg },
             set: { cDeg = $0
                 if $0 > 0.0 {
-                    aDegFunc()
-                    cSideDegFuncC()
+                    bDeg = 90.0
+                    funcADeg()
+                    aDeg = 180.0 - bDeg - cDeg
+                    funcBSide()
+                    funcASide()
+                    funcCSide()
                 }
             }
         )
