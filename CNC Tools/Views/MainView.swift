@@ -62,14 +62,17 @@ struct MainView: View {
                                   navNames: ["Milling", "Turning", "Drilling"],
                                   navViews: [{ AnyView(MillingView()) },
                                                      { AnyView(TurningView()) },
-                                                     { AnyView(DrillingView()) }]
+                                                     { AnyView(DrillingView()) }],
+                                  gradients: [Gradient(colors: [Color.pink.opacity(0.6), Color.blue.opacity(0.6)]),
+                                              Gradient(colors: [.black, .green]),
+                                              Gradient(colors: [.black, .orange])]
                     )
                     // 2ND ROW
                     MainComponent(categoryName: "Geometry",
-                                  iconNames: ["", ""],
-                                  navNames: ["Triangle", "Сircle"],
-                                  navViews: [{ AnyView(TrigView()) },
-                                                     { AnyView(ToleranceView()) }]
+                                  iconNames: ["Triangle"],
+                                  navNames: ["Triangle"],
+                                  navViews: [{ AnyView(TrigView()) }],
+                                  gradients: [Gradient(colors: [.black, .blue])]
                     )
                     // 3RD ROW
                     HStack(alignment: .center) {

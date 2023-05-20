@@ -16,8 +16,11 @@ struct TrigView: View {
     @State private var cSide = 0.0
     
     @State private var aDeg = 0.0
-    @State private var bDeg = 0.0
+    @State private var bDeg = 90.0
     @State private var cDeg = 0.0
+    
+    @State private var area = 0.0
+    @State private var perimeter = 0.0
     
     func nonNumberShield() {
         if cSide < aSide {
@@ -68,6 +71,14 @@ struct TrigView: View {
         cSide = pow(aSide, 2) + pow(bSide, 2)
         cSide = sqrt(cSide)
     }
+    // Area calculating
+    func funcArea() {
+        area = 1/2 * aSide * bSide
+    }
+    // Perimeter calculating
+    func funcPerimeter() {
+        perimeter = aSide + bSide + cSide
+    }
     
     
     var body: some View {
@@ -81,6 +92,8 @@ struct TrigView: View {
                     funcASide()
                     funcADeg()
                     funcCDeg()
+                    funcPerimeter()
+                    funcArea()
                 }
             }
         )
@@ -94,6 +107,8 @@ struct TrigView: View {
                     funcBSide()
                     funcADeg()
                     funcCDeg()
+                    funcPerimeter()
+                    funcArea()
                 }
             }
         )
@@ -107,6 +122,8 @@ struct TrigView: View {
                     funcASide()
                     funcADeg()
                     funcCDeg()
+                    funcPerimeter()
+                    funcArea()
                 }
             }
         )
@@ -120,14 +137,8 @@ struct TrigView: View {
                     funcBSide()
                     funcASide()
                     funcCSide()
-                }
-            }
-        )
-        let degB = Binding (
-            get: { bDeg },
-            set: { bDeg = $0
-                if $0 > 0.0 {
-                    bDeg = 90.0
+                    funcPerimeter()
+                    funcArea()
                 }
             }
         )
@@ -141,6 +152,8 @@ struct TrigView: View {
                     funcBSide()
                     funcASide()
                     funcCSide()
+                    funcPerimeter()
+                    funcArea()
                 }
             }
         )
@@ -175,9 +188,53 @@ struct TrigView: View {
                     HStack {
                         Spacer()
                         TrigInputComponent(name: "Alpha", inputName: "α", inputValue: degA)
-                        TrigInputComponent(name: "Beta", inputName: "β", inputValue: degB)
+                        HStack {
+                            VStack(alignment: .center) {
+                                Text("Beta")
+                                    .font(.system(size: 17, weight: .bold))
+                                    .foregroundColor(.blue)
+                                Text("90")
+                                    .padding(.top, -15)
+                                    .font(.system(size: 27, weight: .bold))
+                                    .multilineTextAlignment(/*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            }
+                        }
+                        .padding(.horizontal, 40.0)
+                        
                         TrigInputComponent(name: "Gamma", inputName: "γ", inputValue: degC)
                         Spacer()
+                    }
+                    if aSide > 0.0 {
+                        HStack {
+                            Spacer()
+                            HStack {
+                                VStack(alignment: .center) {
+                                    Text("Area")
+                                        .font(.system(size: 17, weight: .bold))
+                                        .foregroundColor(.blue)
+                                    Text("\(area.removeZerosFromEnd())")
+                                        .padding(.top, -15)
+                                        .font(.system(size: 27, weight: .bold))
+                                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                    
+                                }
+                            }
+                            .padding(.horizontal, 40.0)
+                            HStack {
+                                VStack(alignment: .center) {
+                                    Text("Perimeter")
+                                        .font(.system(size: 17, weight: .bold))
+                                        .foregroundColor(.blue)
+                                    Text("\(perimeter.removeZerosFromEnd())")
+                                        .padding(.top, -15)
+                                        .font(.system(size: 27, weight: .bold))
+                                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                }
+                            }
+                            .padding(.horizontal, 40.0)
+                            Spacer()
+                        }
+                        .padding(.top)
                     }
                     Spacer()
                     ZStack {
@@ -205,9 +262,9 @@ struct TrigView: View {
                                 .padding()
                                 Spacer()
                             }
-                            Text("α").offset(x: 65, y: -60 )
+                            Text("γ").offset(x: 65, y: -60 )
                             Text("β").offset(x: -100, y: -80)
-                            Text("γ").offset(x: -105, y: -280)
+                            Text("α").offset(x: -105, y: -280)
                         }
                     }
                 }

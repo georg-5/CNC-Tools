@@ -63,7 +63,7 @@ struct SavedToolsView: View {
                         }
                     }
                 }
-                .font(.custom("TestSohne-Halbfett", size: 12))
+                .font(.system(size: 12, weight: .bold, design: .default))
                 .foregroundColor(.blue)
                 .scrollContentBackground(.hidden)
                 if storeKitManager.premiumUnlocked == false {
