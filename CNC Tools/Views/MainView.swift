@@ -63,16 +63,18 @@ struct MainView: View {
                                   navViews: [{ AnyView(MillingView()) },
                                                      { AnyView(TurningView()) },
                                                      { AnyView(DrillingView()) }],
-                                  gradients: [Gradient(colors: [Color.pink.opacity(0.6), Color.blue.opacity(0.6)]),
-                                              Gradient(colors: [.black, .green]),
-                                              Gradient(colors: [.black, .orange])]
+                                  gradients: [
+                                    Gradient(colors: [Color.blue.opacity(1), Color.black.opacity(0.3)]),
+                                    Gradient(colors: [Color.yellow.opacity(1), Color.black.opacity(0.4)]),
+                                    Gradient(colors: [Color.orange.opacity(1), Color.black.opacity(0.3)])
+                                  ]
                     )
                     // 2ND ROW
                     MainComponent(categoryName: "Geometry",
                                   iconNames: ["Triangle"],
                                   navNames: ["Triangle"],
                                   navViews: [{ AnyView(TrigView()) }],
-                                  gradients: [Gradient(colors: [.black, .blue])]
+                                  gradients: [Gradient(colors: [Color.red.opacity(1), Color.black.opacity(0.3)])]
                     )
                     // 3RD ROW
                     HStack(alignment: .center) {
@@ -85,7 +87,13 @@ struct MainView: View {
                     .padding(.top, -15.0)
                     VStack(alignment: .leading, spacing: 5.0) {
                         HStack(alignment: .center) {
-                            GradientRectangle(cRadius: 3, recIconName: "Tools")
+                            RoundedRectangle(cornerRadius: 3.0)
+                                .fill(LinearGradient(gradient: Gradient(colors: [.green.opacity(1), .blue.opacity(0.5)]), startPoint: .topLeading, endPoint: .bottomTrailing))
+                                .overlay(
+                                    Image("Tools")
+                                        .resizable()
+                                        .frame(maxWidth: .infinity, minHeight: 19)
+                                    )
                                 .frame(width: sSizes + 8.0, height: sSizes + 8.0)
                             if storeKitManager.premiumUnlocked {
                                 if checkValuesInCoreData() {

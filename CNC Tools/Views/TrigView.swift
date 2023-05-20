@@ -205,8 +205,7 @@ struct TrigView: View {
                         Spacer()
                     }
                     if aSide > 0.0 {
-                        HStack {
-                            Spacer()
+                        VStack {
                             HStack {
                                 VStack(alignment: .center) {
                                     Text("Area")
@@ -232,6 +231,7 @@ struct TrigView: View {
                                 }
                             }
                             .padding(.horizontal, 40.0)
+                            .padding(.top)
                             Spacer()
                         }
                         .padding(.top)
