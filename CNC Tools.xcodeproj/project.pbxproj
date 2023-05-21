@@ -11,6 +11,7 @@
 		5621B3A72A07C74E00FA02D1 /* TrigInputComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5621B3A62A07C74E00FA02D1 /* TrigInputComp.swift */; };
 		563966FD29EB34A900954605 /* StoreKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563966FC29EB34A900954605 /* StoreKitManager.swift */; };
 		563966FF29EC04D500954605 /* CNC Tools.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 563966FE29EB421700954605 /* CNC Tools.storekit */; };
+		566E49BB2A1A4403005F300A /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566E49BA2A1A4403005F300A /* MailView.swift */; };
 		569F1BE129EC69C7009C93E2 /* ReviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F1BE029EC69C7009C93E2 /* ReviewManager.swift */; };
 		569F1BE329EC6A26009C93E2 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F1BE229EC6A26009C93E2 /* AppState.swift */; };
 		569F1BE829EDD43C009C93E2 /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569F1BE729EDD43C009C93E2 /* BannerViewController.swift */; };
@@ -66,6 +67,7 @@
 		563966FC29EB34A900954605 /* StoreKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitManager.swift; sourceTree = "<group>"; };
 		563966FE29EB421700954605 /* CNC Tools.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CNC Tools.storekit"; sourceTree = "<group>"; };
 		565D2EAE29E9E11E00FA3F95 /* CNC Tools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CNC Tools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		566E49BA2A1A4403005F300A /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		5683C60629D869ED0097BD19 /* CNC-Tools-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CNC-Tools-Info.plist"; sourceTree = "<group>"; };
 		569F1BE029EC69C7009C93E2 /* ReviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewManager.swift; sourceTree = "<group>"; };
 		569F1BE229EC6A26009C93E2 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				569F1BE229EC6A26009C93E2 /* AppState.swift */,
 				569F1BE729EDD43C009C93E2 /* BannerViewController.swift */,
 				569F1BED29EDE16C009C93E2 /* AdBanner.swift */,
+				566E49BA2A1A4403005F300A /* MailView.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 				56CF5BB029D76FA200A1A355 /* DrillingView.swift in Sources */,
 				5621B3A52A07C69900FA02D1 /* TrigView.swift in Sources */,
 				569F1BE329EC6A26009C93E2 /* AppState.swift in Sources */,
+				566E49BB2A1A4403005F300A /* MailView.swift in Sources */,
 				56EEB9B229C7B2D8009894D1 /* InputComp.swift in Sources */,
 				56CF5BA829D4B39600A1A355 /* SavedToolsView.swift in Sources */,
 				56CF5BAC29D4D45700A1A355 /* SavedComp.swift in Sources */,

@@ -2,6 +2,7 @@ import SwiftUI
 import CoreData
 import StoreKit
 import GoogleMobileAds
+import MessageUI
 
 struct SettingsView: View {
     // MARK: - Variables
@@ -11,6 +12,9 @@ struct SettingsView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var tools: FetchedResults<Tool>
+    
+    @State var result: Result<MFMailComposeResult, Error>? = nil
+    @State var isShowingMailView = false
 
     // MARK: - Functions
     func updateMetricInches() {
@@ -79,6 +83,30 @@ struct SettingsView: View {
                     .padding(.leading)
                     .font(.system(size: 28, weight: .bold))
                     Spacer()
+                    //MARK: - Contact form
+                    HStack {
+                        VStack {
+                                    if MFMailComposeViewController.canSendMail() {
+                                        Button("Report a bug / Suggest a feature") {
+                                            self.isShowingMailView.toggle()
+                                        }
+                                    } else {
+                                        Text("Can't send emails from this device")
+                                    }
+                                    if result != nil {
+                                        Text("Result: \(String(describing: result))")
+                                            .lineLimit(nil)
+                                    }
+                                }
+                                .sheet(isPresented: $isShowingMailView) {
+                                    MailView(isShowing: self.$isShowingMailView, result: self.$result)
+                                }
+                    }
+                    .padding(.leading)
+                    .padding(.top, -1.0)
+                    .padding(.bottom)
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(.blue)
                     if storeKitManager.premiumUnlocked == false {
                         BannerView()
                             .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)

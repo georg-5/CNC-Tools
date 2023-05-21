@@ -4,12 +4,22 @@ import GoogleMobileAds
 import StoreKit
 
 struct TrigView: View {
+    
+    enum Field: Hashable {
+        case aSideField
+        case bSideField
+        case cSideField
+        case aDegField
+        case cDegField
+    }
+    
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.colorScheme) var colorScheme
     @FetchRequest(entity: Tool.entity(), sortDescriptors: []) private var metricInches: FetchedResults<Tool>
     @StateObject private var storeKitManager = StoreKitManager()
     @State private var metricInchesCheck = true    // true - MM, false - INCH
+    @FocusState private var focusedField: Field?
     
     @State private var aSide = 0.0
     @State private var bSide = 0.0
@@ -172,8 +182,11 @@ struct TrigView: View {
                     HStack {
                         Spacer()
                         TrigInputComponent(name: "Base", inputName: "A", inputValue: sideA)
+                            .focused($focusedField, equals: .aSideField)
                         TrigInputComponent(name: "Height", inputName: "B", inputValue: sideB)
+                            .focused($focusedField, equals: .bSideField)
                         TrigInputComponent(name: "Hypotenuse", inputName: "C", inputValue: sideC)
+                            .focused($focusedField, equals: .cSideField)
                         Spacer()
                     }
                     HStack {
@@ -188,6 +201,7 @@ struct TrigView: View {
                     HStack {
                         Spacer()
                         TrigInputComponent(name: "Alpha", inputName: "α", inputValue: degA)
+                            .focused($focusedField, equals: .aDegField)
                         HStack {
                             VStack(alignment: .center) {
                                 Text("Beta")
@@ -202,6 +216,7 @@ struct TrigView: View {
                         .padding(.horizontal, 40.0)
                         
                         TrigInputComponent(name: "Gamma", inputName: "γ", inputValue: degC)
+                            .focused($focusedField, equals: .cDegField)
                         Spacer()
                     }
                     if aSide > 0.0 {
@@ -257,7 +272,7 @@ struct TrigView: View {
                                     path.addLine(to: CGPoint(x: 250, y: 250))
                                     path.closeSubpath()
                                 }
-                                .stroke(Color.black, lineWidth: 2)
+                                .stroke(lineWidth: 2)
                                 .frame(width: 250, height: 250, alignment: .center)
                                 .padding()
                                 Spacer()
@@ -272,6 +287,50 @@ struct TrigView: View {
                 if storeKitManager.premiumUnlocked == false {
                     BannerView()
                         .frame(maxWidth: .infinity, maxHeight: 60, alignment: .bottomTrailing)
+                }
+            }
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    HStack {
+                        Button("Done") {
+                            focusedField = nil
+                        }
+                        Button {
+                            switch focusedField {
+                            case .aSideField:
+                                focusedField = nil
+                            case .bSideField:
+                                focusedField = .aSideField
+                            case .cSideField:
+                                focusedField = .bSideField
+                            case .aDegField:
+                                focusedField = .cSideField
+                            case .cDegField:
+                                focusedField = .aDegField
+                            default:
+                                focusedField = nil
+                            }
+                        } label: {
+                            Image(systemName: "chevron.up")
+                        }
+                        Button {
+                            switch focusedField {
+                            case .aSideField:
+                                focusedField = .bSideField
+                            case .bSideField:
+                                focusedField = .cSideField
+                            case .cSideField:
+                                focusedField = .aDegField
+                            case .aDegField:
+                                focusedField = .cDegField
+                            default:
+                                focusedField = nil
+                            }
+                        } label: {
+                            Image(systemName: "chevron.down")
+                        }
+                    }
                 }
             }
             .padding(.top, 5)

@@ -35,7 +35,7 @@ struct SavedToolsView: View {
                     if !toolsMills.isEmpty {
                         Section(header: Text("Milling")) {
                             ForEach(toolsMills) { tool in
-                                SavedComponent(toolName: tool.toolNameMills ?? "", toolDiameter: tool.toolDiameterMill, spindelSpeed: tool.spindelSpeed, feedRate: tool.feedRate)
+                                SavedComponent(toolName: tool.toolNameMills ?? "", toolDiameter: tool.toolDiameterMill, spindelSpeed: tool.spindelSpeed, feedRate: tool.feedRate, mmInch: tool.mmInchChoosed ?? "")
                             }
                             .onDelete(perform: { offsets in
                                 deleteItems(offsets: offsets, tools: toolsMills)
@@ -45,7 +45,7 @@ struct SavedToolsView: View {
                     if !toolsTurns.isEmpty {
                         Section(header: Text("Turning")) {
                             ForEach(toolsTurns) { tool in
-                                SavedComponent(toolName: tool.toolNameTurns ?? "", toolDiameter: tool.outerDiameter, spindelSpeed: tool.spindelSpeedTurn, feedRate: tool.feedRateTurn)
+                                SavedComponent(toolName: tool.toolNameTurns ?? "", toolDiameter: tool.outerDiameter, spindelSpeed: tool.spindelSpeedTurn, feedRate: tool.feedRateTurn, mmInch: tool.mmInchChoosed ?? "")
                             }
                             .onDelete(perform: { offsets in
                                 deleteItems(offsets: offsets, tools: toolsTurns)
@@ -55,7 +55,7 @@ struct SavedToolsView: View {
                     if !toolsDrills.isEmpty {
                         Section(header: Text("Drilling")) {
                             ForEach(toolsDrills) { tool in
-                                SavedComponent(toolName: tool.toolNameDrills ?? "", toolDiameter: tool.toolDiameterDrill, spindelSpeed: tool.spindelSpeedDrill, feedRate: tool.feedRateDrill)
+                                SavedComponent(toolName: tool.toolNameDrills ?? "", toolDiameter: tool.toolDiameterDrill, spindelSpeed: tool.spindelSpeedDrill, feedRate: tool.feedRateDrill, mmInch: tool.mmInchChoosed ?? "")
                             }
                             .onDelete(perform: { offsets in
                                 deleteItems(offsets: offsets, tools: toolsDrills)

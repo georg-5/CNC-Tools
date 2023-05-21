@@ -31,6 +31,7 @@ struct MillingView: View {
     @State private var showAlert = false
     @State private var toolName = ""
     @State private var metricInchesCheck = true    // true - MM, false - INCH
+    @State private var unit = ""
     
     // MARK: - Functions
     func saveTool() {
@@ -40,6 +41,12 @@ struct MillingView: View {
             newTool.feedRate = feedRate
             newTool.toolNameMills = toolName
             newTool.toolType = "milling"
+        if metricInchesCheck == true {
+            unit = "mm/min"
+        } else {
+            unit = "in/min"
+        }
+            newTool.mmInchChoosed = unit
             do {
                 try viewContext.save()
                 print("Tool saved successfully")
@@ -209,7 +216,6 @@ struct MillingView: View {
                             }
                             .alert("Enter tool name.", isPresented: $showAlert, actions: {
                                 TextField("Tool name", text: $toolName)
-                                    .foregroundColor(.black)
                                 Button("Save", action: {
                                     saveTool()
                                     toolName = ""

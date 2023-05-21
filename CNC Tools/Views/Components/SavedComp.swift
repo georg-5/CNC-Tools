@@ -5,15 +5,17 @@ struct SavedComponent: View {
     var toolDiameter: Double
     var spindelSpeed: Double
     var feedRate: Double
+    var mmInch: String
     @State var openStack = false
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    init(toolName: String, toolDiameter: Double, spindelSpeed: Double, feedRate: Double) {
+    init(toolName: String, toolDiameter: Double, spindelSpeed: Double, feedRate: Double, mmInch: String) {
         self.toolName = toolName
         self.toolDiameter = toolDiameter
         self.spindelSpeed = spindelSpeed
         self.feedRate = feedRate
+        self.mmInch = mmInch
     }
     let twoDigits: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -54,13 +56,23 @@ struct SavedComponent: View {
                         .frame(width: 36.0)
                     VStack(alignment: .leading) {
                         Text("Spindel speed:")
-                        Text(twoDigits.string(from: NSNumber(value: spindelSpeed)) ?? "")
+                        HStack(alignment: .bottom) {
+                            Text(twoDigits.string(from: NSNumber(value: spindelSpeed)) ?? "")
+                            Text("rpm")
+                                .font(.caption2)
+                                .foregroundColor(Color.blue)
+                        }
                     }
                     Spacer()
                         .frame(width: 60.0)
                     VStack(alignment: .leading) {
                         Text("Feed rate:")
-                        Text(twoDigits.string(from: NSNumber(value: feedRate)) ?? "")
+                        HStack(alignment: .bottom) {
+                            Text(twoDigits.string(from: NSNumber(value: feedRate)) ?? "")
+                            Text(mmInch)
+                                .font(.caption2)
+                                .foregroundColor(.blue)
+                        }
                     }
                 }
                 .padding(.top, 5.0)
@@ -74,6 +86,6 @@ struct SavedComponent: View {
 
 struct SavedComponent_Previews: PreviewProvider {
     static var previews: some View {
-        SavedComponent(toolName: "Sandvik", toolDiameter: 120.0, spindelSpeed: 1200.0, feedRate: 666).padding()
+        SavedComponent(toolName: "Sandvik", toolDiameter: 120.0, spindelSpeed: 1200.0, feedRate: 666, mmInch: "mm/min").padding()
     }
 }
