@@ -85,22 +85,24 @@ struct SettingsView: View {
                     Spacer()
                     //MARK: - Contact form
                     HStack {
+                        Spacer()
                         VStack {
-                                    if MFMailComposeViewController.canSendMail() {
-                                        Button("Report a bug / Suggest a feature") {
-                                            self.isShowingMailView.toggle()
-                                        }
-                                    } else {
-                                        Text("Can't send emails from this device")
-                                    }
-                                    if result != nil {
-                                        Text("Result: \(String(describing: result))")
-                                            .lineLimit(nil)
-                                    }
+                            if MFMailComposeViewController.canSendMail() {
+                                Button("Report a bug / Suggest a feature") {
+                                    self.isShowingMailView.toggle()
                                 }
-                                .sheet(isPresented: $isShowingMailView) {
-                                    MailView(isShowing: self.$isShowingMailView, result: self.$result)
-                                }
+                            } else {
+                                Text("Can't send emails from this device")
+                            }
+                            if result != nil {
+                                Text("Result: \(String(describing: result))")
+                                    .lineLimit(nil)
+                            }
+                        }
+                        .sheet(isPresented: $isShowingMailView) {
+                            MailView(isShowing: self.$isShowingMailView, result: self.$result)
+                        }
+                        Spacer()
                     }
                     .padding(.leading)
                     .padding(.top, -1.0)
