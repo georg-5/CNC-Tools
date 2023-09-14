@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22213.2" systemVersion="23A5312d" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Tool" representedClassName="Tool" syncable="YES" codeGenerationType="class">
+        <attribute name="feedRate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="feedRateDrill" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="feedRateTurn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="mmInchChoosed" optional="YES" attributeType="String"/>
+        <attribute name="mmOrInch" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="outerDiameter" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="spindelSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="spindelSpeedDrill" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="spindelSpeedTurn" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="toolDiameterDrill" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="toolDiameterMill" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="toolNameDrills" optional="YES" attributeType="String"/>
+        <attribute name="toolNameMills" optional="YES" attributeType="String"/>
+        <attribute name="toolNameTurns" optional="YES" attributeType="String"/>
+        <attribute name="toolType" optional="YES" attributeType="String"/>
+    </entity>
+</model>
